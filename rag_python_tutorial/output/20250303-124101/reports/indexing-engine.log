@@ -1,0 +1,1134 @@
+12:41:01,608 graphrag.config.read_dotenv INFO Loading pipeline .env file
+12:41:01,608 graphrag.index.cli INFO using default configuration: {
+    "llm": {
+        "api_key": "REDACTED, length 51",
+        "type": "openai_chat",
+        "model": "deepseek-ai/DeepSeek-V3",
+        "max_tokens": 4000,
+        "request_timeout": 180.0,
+        "api_base": "https://api.siliconflow.cn/v1/chat/completions",
+        "api_version": null,
+        "proxy": null,
+        "cognitive_services_endpoint": null,
+        "deployment_name": null,
+        "model_supports_json": false,
+        "tokens_per_minute": 0,
+        "requests_per_minute": 0,
+        "max_retries": 10,
+        "max_retry_wait": 10.0,
+        "sleep_on_rate_limit_recommendation": true,
+        "concurrent_requests": 25
+    },
+    "parallelization": {
+        "stagger": 0.3,
+        "num_threads": 50
+    },
+    "async_mode": "threaded",
+    "root_dir": ".\\rag_python_tutorial",
+    "reporting": {
+        "type": "file",
+        "base_dir": "output/${timestamp}/reports",
+        "storage_account_blob_url": null
+    },
+    "storage": {
+        "type": "file",
+        "base_dir": "output/${timestamp}/artifacts",
+        "storage_account_blob_url": null
+    },
+    "cache": {
+        "type": "file",
+        "base_dir": "cache",
+        "storage_account_blob_url": null
+    },
+    "input": {
+        "type": "file",
+        "file_type": "text",
+        "base_dir": "input",
+        "storage_account_blob_url": null,
+        "encoding": "utf-8",
+        "file_pattern": ".*\\.txt$",
+        "file_filter": null,
+        "source_column": null,
+        "timestamp_column": null,
+        "timestamp_format": null,
+        "text_column": "text",
+        "title_column": null,
+        "document_attribute_columns": []
+    },
+    "embed_graph": {
+        "enabled": false,
+        "num_walks": 10,
+        "walk_length": 40,
+        "window_size": 2,
+        "iterations": 3,
+        "random_seed": 597832,
+        "strategy": null
+    },
+    "embeddings": {
+        "llm": {
+            "api_key": "REDACTED, length 51",
+            "type": "openai_embedding",
+            "model": "BAAI/bge-large-en-v1.5",
+            "max_tokens": 4000,
+            "request_timeout": 180.0,
+            "api_base": "https://api.siliconflow.cn/v1/embeddings",
+            "api_version": null,
+            "proxy": null,
+            "cognitive_services_endpoint": null,
+            "deployment_name": null,
+            "model_supports_json": null,
+            "tokens_per_minute": 0,
+            "requests_per_minute": 0,
+            "max_retries": 10,
+            "max_retry_wait": 10.0,
+            "sleep_on_rate_limit_recommendation": true,
+            "concurrent_requests": 25
+        },
+        "parallelization": {
+            "stagger": 0.3,
+            "num_threads": 50
+        },
+        "async_mode": "threaded",
+        "batch_size": 16,
+        "batch_max_tokens": 8191,
+        "target": "required",
+        "skip": [],
+        "vector_store": null,
+        "strategy": null
+    },
+    "chunks": {
+        "size": 300,
+        "overlap": 100,
+        "group_by_columns": [
+            "id"
+        ],
+        "strategy": null
+    },
+    "snapshots": {
+        "graphml": false,
+        "raw_entities": false,
+        "top_level_nodes": false
+    },
+    "entity_extraction": {
+        "llm": {
+            "api_key": "REDACTED, length 51",
+            "type": "openai_chat",
+            "model": "deepseek-ai/DeepSeek-V3",
+            "max_tokens": 4000,
+            "request_timeout": 180.0,
+            "api_base": "https://api.siliconflow.cn/v1/chat/completions",
+            "api_version": null,
+            "proxy": null,
+            "cognitive_services_endpoint": null,
+            "deployment_name": null,
+            "model_supports_json": false,
+            "tokens_per_minute": 0,
+            "requests_per_minute": 0,
+            "max_retries": 10,
+            "max_retry_wait": 10.0,
+            "sleep_on_rate_limit_recommendation": true,
+            "concurrent_requests": 25
+        },
+        "parallelization": {
+            "stagger": 0.3,
+            "num_threads": 50
+        },
+        "async_mode": "threaded",
+        "prompt": "prompts/entity_extraction.txt",
+        "entity_types": [
+            "organization",
+            "person",
+            "geo",
+            "event"
+        ],
+        "max_gleanings": 0,
+        "strategy": null
+    },
+    "summarize_descriptions": {
+        "llm": {
+            "api_key": "REDACTED, length 51",
+            "type": "openai_chat",
+            "model": "deepseek-ai/DeepSeek-V3",
+            "max_tokens": 4000,
+            "request_timeout": 180.0,
+            "api_base": "https://api.siliconflow.cn/v1/chat/completions",
+            "api_version": null,
+            "proxy": null,
+            "cognitive_services_endpoint": null,
+            "deployment_name": null,
+            "model_supports_json": false,
+            "tokens_per_minute": 0,
+            "requests_per_minute": 0,
+            "max_retries": 10,
+            "max_retry_wait": 10.0,
+            "sleep_on_rate_limit_recommendation": true,
+            "concurrent_requests": 25
+        },
+        "parallelization": {
+            "stagger": 0.3,
+            "num_threads": 50
+        },
+        "async_mode": "threaded",
+        "prompt": "prompts/summarize_descriptions.txt",
+        "max_length": 500,
+        "strategy": null
+    },
+    "community_reports": {
+        "llm": {
+            "api_key": "REDACTED, length 51",
+            "type": "openai_chat",
+            "model": "deepseek-ai/DeepSeek-V3",
+            "max_tokens": 4000,
+            "request_timeout": 180.0,
+            "api_base": "https://api.siliconflow.cn/v1/chat/completions",
+            "api_version": null,
+            "proxy": null,
+            "cognitive_services_endpoint": null,
+            "deployment_name": null,
+            "model_supports_json": false,
+            "tokens_per_minute": 0,
+            "requests_per_minute": 0,
+            "max_retries": 10,
+            "max_retry_wait": 10.0,
+            "sleep_on_rate_limit_recommendation": true,
+            "concurrent_requests": 25
+        },
+        "parallelization": {
+            "stagger": 0.3,
+            "num_threads": 50
+        },
+        "async_mode": "threaded",
+        "prompt": null,
+        "max_length": 2000,
+        "max_input_length": 8000,
+        "strategy": null
+    },
+    "claim_extraction": {
+        "llm": {
+            "api_key": "REDACTED, length 51",
+            "type": "openai_chat",
+            "model": "deepseek-ai/DeepSeek-V3",
+            "max_tokens": 4000,
+            "request_timeout": 180.0,
+            "api_base": "https://api.siliconflow.cn/v1/chat/completions",
+            "api_version": null,
+            "proxy": null,
+            "cognitive_services_endpoint": null,
+            "deployment_name": null,
+            "model_supports_json": false,
+            "tokens_per_minute": 0,
+            "requests_per_minute": 0,
+            "max_retries": 10,
+            "max_retry_wait": 10.0,
+            "sleep_on_rate_limit_recommendation": true,
+            "concurrent_requests": 25
+        },
+        "parallelization": {
+            "stagger": 0.3,
+            "num_threads": 50
+        },
+        "async_mode": "threaded",
+        "enabled": false,
+        "prompt": "prompts/claim_extraction.txt",
+        "description": "Any claims or facts that could be relevant to information discovery.",
+        "max_gleanings": 0,
+        "strategy": null
+    },
+    "cluster_graph": {
+        "max_cluster_size": 10,
+        "strategy": null
+    },
+    "umap": {
+        "enabled": false
+    },
+    "local_search": {
+        "text_unit_prop": 0.5,
+        "community_prop": 0.1,
+        "conversation_history_max_turns": 5,
+        "top_k_entities": 10,
+        "top_k_relationships": 10,
+        "max_tokens": 12000,
+        "llm_max_tokens": 2000
+    },
+    "global_search": {
+        "max_tokens": 12000,
+        "data_max_tokens": 12000,
+        "map_max_tokens": 1000,
+        "reduce_max_tokens": 2000,
+        "concurrency": 32
+    },
+    "encoding_model": "cl100k_base",
+    "skip_workflows": []
+}
+12:41:01,608 graphrag.index.create_pipeline_config INFO skipping workflows 
+12:41:01,608 graphrag.index.run INFO Running pipeline
+12:41:01,608 graphrag.index.storage.file_pipeline_storage INFO Creating file storage at rag_python_tutorial\output\20250303-124101\artifacts
+12:41:01,624 graphrag.index.input.load_input INFO loading input from root_dir=input
+12:41:01,624 graphrag.index.input.load_input INFO using file storage for input
+12:41:01,624 graphrag.index.storage.file_pipeline_storage INFO search rag_python_tutorial\input for files matching .*\.txt$
+12:41:01,624 graphrag.index.input.text INFO found text files from input, found [('graphrag_test.txt', {})]
+12:41:01,624 graphrag.index.workflows.load INFO Workflow Run Order: ['create_base_text_units', 'create_base_extracted_entities', 'create_summarized_entities', 'create_base_entity_graph', 'create_final_entities', 'create_final_nodes', 'create_final_communities', 'join_text_units_to_entity_ids', 'create_final_relationships', 'join_text_units_to_relationship_ids', 'create_final_community_reports', 'create_final_text_units', 'create_base_documents', 'create_final_documents']
+12:41:01,624 graphrag.index.run INFO Final # of rows loaded: 1
+12:41:01,734 graphrag.index.run INFO Running workflow: create_base_text_units...
+12:41:01,734 graphrag.index.run INFO dependencies for create_base_text_units: []
+12:41:01,734 datashaper.workflow.workflow INFO executing verb orderby
+12:41:01,734 datashaper.workflow.workflow INFO executing verb zip
+12:41:01,734 datashaper.workflow.workflow INFO executing verb aggregate_override
+12:41:01,748 datashaper.workflow.workflow INFO executing verb chunk
+12:41:01,882 datashaper.workflow.workflow INFO executing verb select
+12:41:01,886 datashaper.workflow.workflow INFO executing verb unroll
+12:41:01,886 datashaper.workflow.workflow INFO executing verb rename
+12:41:01,886 datashaper.workflow.workflow INFO executing verb genid
+12:41:01,893 datashaper.workflow.workflow INFO executing verb unzip
+12:41:01,893 datashaper.workflow.workflow INFO executing verb copy
+12:41:01,905 datashaper.workflow.workflow INFO executing verb filter
+12:41:01,909 graphrag.index.emit.parquet_table_emitter INFO emitting parquet table create_base_text_units.parquet
+12:41:02,36 graphrag.index.run INFO Running workflow: create_base_extracted_entities...
+12:41:02,36 graphrag.index.run INFO dependencies for create_base_extracted_entities: ['create_base_text_units']
+12:41:02,36 graphrag.index.run INFO read table from storage: create_base_text_units.parquet
+12:41:02,57 datashaper.workflow.workflow INFO executing verb entity_extract
+12:41:02,57 graphrag.llm.openai.create_openai_client INFO Creating OpenAI client base_url=https://api.siliconflow.cn/v1/chat/completions
+12:41:02,691 graphrag.index.llm.load_llm INFO create TPM/RPM limiter for deepseek-ai/DeepSeek-V3: TPM=0, RPM=0
+12:41:02,691 graphrag.index.llm.load_llm INFO create concurrency limiter for deepseek-ai/DeepSeek-V3: 25
+12:41:02,904 httpx INFO HTTP Request: POST https://api.siliconflow.cn/v1/chat/completions/chat/completions "HTTP/1.1 404 404 Page not found"
+12:41:02,904 graphrag.index.reporting.file_workflow_callbacks INFO Error Invoking LLM details={'input': '\n-Goal-\nGiven a text document that is potentially relevant to this activity and a list of entity types, identify all entities of those types from the text and all relationships among the identified entities.\n\n-Steps-\n1. Identify all entities. For each identified entity, extract the following information:\n- entity_name: Name of the entity, capitalized\n- entity_type: One of the following types: [organization,person,geo,event]\n- entity_description: Comprehensive description of the entity\'s attributes and activities\nFormat each entity as ("entity"<|><entity_name><|><entity_type><|><entity_description>\n\n2. From the entities identified in step 1, identify all pairs of (source_entity, target_entity) that are *clearly related* to each other.\nFor each pair of related entities, extract the following information:\n- source_entity: name of the source entity, as identified in step 1\n- target_entity: name of the target entity, as identified in step 1\n- relationship_description: explanation as to why you think the source entity and the target entity are related to each other\n- relationship_strength: a numeric score indicating strength of the relationship between the source entity and target entity\n Format each relationship as ("relationship"<|><source_entity><|><target_entity><|><relationship_description><|><relationship_strength>)\n\n3. Return output in English as a single list of all the entities and relationships identified in steps 1 and 2. Use **##** as the list delimiter.\n\n4. When finished, output <|COMPLETE|>\n\n######################\n-Examples-\n######################\nExample 1:\n\nEntity_types: [person, technology, mission, organization, location]\nText:\nwhile Alex clenched his jaw, the buzz of frustration dull against the backdrop of Taylor\'s authoritarian certainty. It was this competitive undercurrent that kept him alert, the sense that his and Jordan\'s shared commitment to discovery was an unspoken rebellion against Cruz\'s narrowing vision of control and order.\n\nThen Taylor did something unexpected. They paused beside Jordan and, for a moment, observed the device with something akin to reverence. “If this tech can be understood..." Taylor said, their voice quieter, "It could change the game for us. For all of us.”\n\nThe underlying dismissal earlier seemed to falter, replaced by a glimpse of reluctant respect for the gravity of what lay in their hands. Jordan looked up, and for a fleeting heartbeat, their eyes locked with Taylor\'s, a wordless clash of wills softening into an uneasy truce.\n\nIt was a small transformation, barely perceptible, but one that Alex noted with an inward nod. They had all been brought here by different paths\n################\nOutput:\n("entity"<|>"Alex"<|>"person"<|>"Alex is a character who experiences frustration and is observant of the dynamics among other characters.")##\n("entity"<|>"Taylor"<|>"person"<|>"Taylor is portrayed with authoritarian certainty and shows a moment of reverence towards a device, indicating a change in perspective.")##\n("entity"<|>"Jordan"<|>"person"<|>"Jordan shares a commitment to discovery and has a significant interaction with Taylor regarding a device.")##\n("entity"<|>"Cruz"<|>"person"<|>"Cruz is associated with a vision of control and order, influencing the dynamics among other characters.")##\n("entity"<|>"The Device"<|>"technology"<|>"The Device is central to the story, with potential game-changing implications, and is revered by Taylor.")##\n("relationship"<|>"Alex"<|>"Taylor"<|>"Alex is affected by Taylor\'s authoritarian certainty and observes changes in Taylor\'s attitude towards the device."<|>7)##\n("relationship"<|>"Alex"<|>"Jordan"<|>"Alex and Jordan share a commitment to discovery, which contrasts with Cruz\'s vision."<|>6)##\n("relationship"<|>"Taylor"<|>"Jordan"<|>"Taylor and Jordan interact directly regarding the device, leading to a moment of mutual respect and an uneasy truce."<|>8)##\n("relationship"<|>"Jordan"<|>"Cruz"<|>"Jordan\'s commitment to discovery is in rebellion against Cruz\'s vision of control and order."<|>5)##\n("relationship"<|>"Taylor"<|>"The Device"<|>"Taylor shows reverence towards the device, indicating its importance and potential impact."<|>9)<|COMPLETE|>\n#############################\nExample 2:\n\nEntity_types: [person, technology, mission, organization, location]\nText:\nThey were no longer mere operatives; they had become guardians of a threshold, keepers of a message from a realm beyond stars and stripes. This elevation in their mission could not be shackled by regulations and established protocols—it demanded a new perspective, a new resolve.\n\nTension threaded through the dialogue of beeps and static as communications with Washington buzzed in the background. The team stood, a portentous air enveloping them. It was clear that the decisions they made in the ensuing hours could redefine humanity\'s place in the cosmos or condemn them to ignorance and potential peril.\n\nTheir connection to the stars solidified, the group moved to address the crystallizing warning, shifting from passive recipients to active participants. Mercer\'s latter instincts gained precedence— the team\'s mandate had evolved, no longer solely to observe and report but to interact and prepare. A metamorphosis had begun, and Operation: Dulce hummed with the newfound frequency of their daring, a tone set not by the earthly\n#############\nOutput:\n("entity"<|>"Washington"<|>"location"<|>"Washington is a location where communications are being received, indicating its importance in the decision-making process.")##\n("entity"<|>"Operation: Dulce"<|>"mission"<|>"Operation: Dulce is described as a mission that has evolved to interact and prepare, indicating a significant shift in objectives and activities.")##\n("entity"<|>"The team"<|>"organization"<|>"The team is portrayed as a group of individuals who have transitioned from passive observers to active participants in a mission, showing a dynamic change in their role.")##\n("relationship"<|>"The team"<|>"Washington"<|>"The team receives communications from Washington, which influences their decision-making process."<|>7)##\n("relationship"<|>"The team"<|>"Operation: Dulce"<|>"The team is directly involved in Operation: Dulce, executing its evolved objectives and activities."<|>9)<|COMPLETE|>\n#############################\nExample 3:\n\nEntity_types: [person, role, technology, organization, event, location, concept]\nText:\ntheir voice slicing through the buzz of activity. "Control may be an illusion when facing an intelligence that literally writes its own rules," they stated stoically, casting a watchful eye over the flurry of data.\n\n"It\'s like it\'s learning to communicate," offered Sam Rivera from a nearby interface, their youthful energy boding a mix of awe and anxiety. "This gives talking to strangers\' a whole new meaning."\n\nAlex surveyed his team—each face a study in concentration, determination, and not a small measure of trepidation. "This might well be our first contact," he acknowledged, "And we need to be ready for whatever answers back."\n\nTogether, they stood on the edge of the unknown, forging humanity\'s response to a message from the heavens. The ensuing silence was palpable—a collective introspection about their role in this grand cosmic play, one that could rewrite human history.\n\nThe encrypted dialogue continued to unfold, its intricate patterns showing an almost uncanny anticipation\n#############\nOutput:\n("entity"<|>"Sam Rivera"<|>"person"<|>"Sam Rivera is a member of a team working on communicating with an unknown intelligence, showing a mix of awe and anxiety.")##\n("entity"<|>"Alex"<|>"person"<|>"Alex is the leader of a team attempting first contact with an unknown intelligence, acknowledging the significance of their task.")##\n("entity"<|>"Control"<|>"concept"<|>"Control refers to the ability to manage or govern, which is challenged by an intelligence that writes its own rules.")##\n("entity"<|>"Intelligence"<|>"concept"<|>"Intelligence here refers to an unknown entity capable of writing its own rules and learning to communicate.")##\n("entity"<|>"First Contact"<|>"event"<|>"First Contact is the potential initial communication between humanity and an unknown intelligence.")##\n("entity"<|>"Humanity\'s Response"<|>"event"<|>"Humanity\'s Response is the collective action taken by Alex\'s team in response to a message from an unknown intelligence.")##\n("relationship"<|>"Sam Rivera"<|>"Intelligence"<|>"Sam Rivera is directly involved in the process of learning to communicate with the unknown intelligence."<|>9)##\n("relationship"<|>"Alex"<|>"First Contact"<|>"Alex leads the team that might be making the First Contact with the unknown intelligence."<|>10)##\n("relationship"<|>"Alex"<|>"Humanity\'s Response"<|>"Alex and his team are the key figures in Humanity\'s Response to the unknown intelligence."<|>8)##\n("relationship"<|>"Control"<|>"Intelligence"<|>"The concept of Control is challenged by the Intelligence that writes its own rules."<|>7)<|COMPLETE|>\n#############################\n-Real Data-\n######################\nEntity_types: organization,person,geo,event\nText: 二个case [\'gcc\', file1, *files]表示列表第一个字符串是\'gcc\'，第二个字符串绑定到变量file1，后面的任意个字符串绑定到*files（符号*的作用将在函数的参数中讲解），它实际上表示至少指定一个文件；\n第三个case [\'clean\']表示列表仅有\'clean\'一个字符串；\n最后一个case _表示其他所有情况。\n可见，match语句的匹配规则非常灵活，可以写出非常简洁的代码。\ndo_match.py\n在Python的交互式命令行写程序，好处是一下就能得到结果，坏处是没法保存，下次还想运行的时候，还得再敲一遍。\n所以，实际开发的时候，我们总是使用一个文本编辑器来写代码，写完了，保存为一个文件，这样，程序就可以反复运行了。\n现在，我们就把上次的\'hello, world\'程序用文本编辑器写出来，保存下来。\n那么问题来了：文本编辑器到底哪家强？\n我们推荐微软出\n######################\nOutput:'}
+12:41:02,904 root ERROR error extracting graph
+Traceback (most recent call last):
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\index\graph\extractors\graph\graph_extractor.py", line 118, in __call__
+    result = await self._process_document(text, prompt_variables)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\index\graph\extractors\graph\graph_extractor.py", line 146, in _process_document
+    response = await self._llm(
+               ^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\openai\json_parsing_llm.py", line 34, in __call__
+    result = await self._delegate(input, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\openai\openai_token_replacing_llm.py", line 37, in __call__
+    return await self._delegate(input, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\openai\openai_history_tracking_llm.py", line 33, in __call__
+    output = await self._delegate(input, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\caching_llm.py", line 104, in __call__
+    result = await self._delegate(input, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\rate_limiting_llm.py", line 177, in __call__
+    result, start = await execute_with_retry()
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\rate_limiting_llm.py", line 159, in execute_with_retry
+    async for attempt in retryer:
+  File "C:\Tool\Anaconda3\Lib\site-packages\tenacity\asyncio\__init__.py", line 166, in __anext__
+    do = await self.iter(retry_state=self._retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\tenacity\asyncio\__init__.py", line 153, in iter
+    result = await action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\tenacity\_utils.py", line 99, in inner
+    return call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\tenacity\__init__.py", line 398, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+                                     ^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\concurrent\futures\_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\rate_limiting_llm.py", line 165, in execute_with_retry
+    return await do_attempt(), start
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\rate_limiting_llm.py", line 147, in do_attempt
+    return await self._delegate(input, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\base_llm.py", line 49, in __call__
+    return await self._invoke(input, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\base_llm.py", line 53, in _invoke
+    output = await self._execute_llm(input, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\openai\openai_chat_llm.py", line 55, in _execute_llm
+    completion = await self.client.chat.completions.create(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\openai\resources\chat\completions\completions.py", line 1927, in create
+    return await self._post(
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\openai\_base_client.py", line 1856, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\openai\_base_client.py", line 1550, in request
+    return await self._request(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\openai\_base_client.py", line 1651, in _request
+    raise self._make_status_error_from_response(err.response) from None
+openai.NotFoundError: 404 page not found
+12:41:02,910 graphrag.index.reporting.file_workflow_callbacks INFO Entity Extraction Error details={'doc_index': 0, 'text': "二个case ['gcc', file1, *files]表示列表第一个字符串是'gcc'，第二个字符串绑定到变量file1，后面的任意个字符串绑定到*files（符号*的作用将在函数的参数中讲解），它实际上表示至少指定一个文件；\n第三个case ['clean']表示列表仅有'clean'一个字符串；\n最后一个case _表示其他所有情况。\n可见，match语句的匹配规则非常灵活，可以写出非常简洁的代码。\ndo_match.py\n在Python的交互式命令行写程序，好处是一下就能得到结果，坏处是没法保存，下次还想运行的时候，还得再敲一遍。\n所以，实际开发的时候，我们总是使用一个文本编辑器来写代码，写完了，保存为一个文件，这样，程序就可以反复运行了。\n现在，我们就把上次的'hello, world'程序用文本编辑器写出来，保存下来。\n那么问题来了：文本编辑器到底哪家强？\n我们推荐微软出"}
+12:41:02,918 httpx INFO HTTP Request: POST https://api.siliconflow.cn/v1/chat/completions/chat/completions "HTTP/1.1 404 404 Page not found"
+12:41:02,919 httpx INFO HTTP Request: POST https://api.siliconflow.cn/v1/chat/completions/chat/completions "HTTP/1.1 404 404 Page not found"
+12:41:02,920 httpx INFO HTTP Request: POST https://api.siliconflow.cn/v1/chat/completions/chat/completions "HTTP/1.1 404 404 Page not found"
+12:41:02,920 httpx INFO HTTP Request: POST https://api.siliconflow.cn/v1/chat/completions/chat/completions "HTTP/1.1 404 404 Page not found"
+12:41:02,920 httpx INFO HTTP Request: POST https://api.siliconflow.cn/v1/chat/completions/chat/completions "HTTP/1.1 404 404 Page not found"
+12:41:02,920 httpx INFO HTTP Request: POST https://api.siliconflow.cn/v1/chat/completions/chat/completions "HTTP/1.1 404 404 Page not found"
+12:41:02,920 httpx INFO HTTP Request: POST https://api.siliconflow.cn/v1/chat/completions/chat/completions "HTTP/1.1 404 404 Page not found"
+12:41:02,920 httpx INFO HTTP Request: POST https://api.siliconflow.cn/v1/chat/completions/chat/completions "HTTP/1.1 404 404 Page not found"
+12:41:02,922 graphrag.index.reporting.file_workflow_callbacks INFO Error Invoking LLM details={'input': '\n-Goal-\nGiven a text document that is potentially relevant to this activity and a list of entity types, identify all entities of those types from the text and all relationships among the identified entities.\n\n-Steps-\n1. Identify all entities. For each identified entity, extract the following information:\n- entity_name: Name of the entity, capitalized\n- entity_type: One of the following types: [organization,person,geo,event]\n- entity_description: Comprehensive description of the entity\'s attributes and activities\nFormat each entity as ("entity"<|><entity_name><|><entity_type><|><entity_description>\n\n2. From the entities identified in step 1, identify all pairs of (source_entity, target_entity) that are *clearly related* to each other.\nFor each pair of related entities, extract the following information:\n- source_entity: name of the source entity, as identified in step 1\n- target_entity: name of the target entity, as identified in step 1\n- relationship_description: explanation as to why you think the source entity and the target entity are related to each other\n- relationship_strength: a numeric score indicating strength of the relationship between the source entity and target entity\n Format each relationship as ("relationship"<|><source_entity><|><target_entity><|><relationship_description><|><relationship_strength>)\n\n3. Return output in English as a single list of all the entities and relationships identified in steps 1 and 2. Use **##** as the list delimiter.\n\n4. When finished, output <|COMPLETE|>\n\n######################\n-Examples-\n######################\nExample 1:\n\nEntity_types: [person, technology, mission, organization, location]\nText:\nwhile Alex clenched his jaw, the buzz of frustration dull against the backdrop of Taylor\'s authoritarian certainty. It was this competitive undercurrent that kept him alert, the sense that his and Jordan\'s shared commitment to discovery was an unspoken rebellion against Cruz\'s narrowing vision of control and order.\n\nThen Taylor did something unexpected. They paused beside Jordan and, for a moment, observed the device with something akin to reverence. “If this tech can be understood..." Taylor said, their voice quieter, "It could change the game for us. For all of us.”\n\nThe underlying dismissal earlier seemed to falter, replaced by a glimpse of reluctant respect for the gravity of what lay in their hands. Jordan looked up, and for a fleeting heartbeat, their eyes locked with Taylor\'s, a wordless clash of wills softening into an uneasy truce.\n\nIt was a small transformation, barely perceptible, but one that Alex noted with an inward nod. They had all been brought here by different paths\n################\nOutput:\n("entity"<|>"Alex"<|>"person"<|>"Alex is a character who experiences frustration and is observant of the dynamics among other characters.")##\n("entity"<|>"Taylor"<|>"person"<|>"Taylor is portrayed with authoritarian certainty and shows a moment of reverence towards a device, indicating a change in perspective.")##\n("entity"<|>"Jordan"<|>"person"<|>"Jordan shares a commitment to discovery and has a significant interaction with Taylor regarding a device.")##\n("entity"<|>"Cruz"<|>"person"<|>"Cruz is associated with a vision of control and order, influencing the dynamics among other characters.")##\n("entity"<|>"The Device"<|>"technology"<|>"The Device is central to the story, with potential game-changing implications, and is revered by Taylor.")##\n("relationship"<|>"Alex"<|>"Taylor"<|>"Alex is affected by Taylor\'s authoritarian certainty and observes changes in Taylor\'s attitude towards the device."<|>7)##\n("relationship"<|>"Alex"<|>"Jordan"<|>"Alex and Jordan share a commitment to discovery, which contrasts with Cruz\'s vision."<|>6)##\n("relationship"<|>"Taylor"<|>"Jordan"<|>"Taylor and Jordan interact directly regarding the device, leading to a moment of mutual respect and an uneasy truce."<|>8)##\n("relationship"<|>"Jordan"<|>"Cruz"<|>"Jordan\'s commitment to discovery is in rebellion against Cruz\'s vision of control and order."<|>5)##\n("relationship"<|>"Taylor"<|>"The Device"<|>"Taylor shows reverence towards the device, indicating its importance and potential impact."<|>9)<|COMPLETE|>\n#############################\nExample 2:\n\nEntity_types: [person, technology, mission, organization, location]\nText:\nThey were no longer mere operatives; they had become guardians of a threshold, keepers of a message from a realm beyond stars and stripes. This elevation in their mission could not be shackled by regulations and established protocols—it demanded a new perspective, a new resolve.\n\nTension threaded through the dialogue of beeps and static as communications with Washington buzzed in the background. The team stood, a portentous air enveloping them. It was clear that the decisions they made in the ensuing hours could redefine humanity\'s place in the cosmos or condemn them to ignorance and potential peril.\n\nTheir connection to the stars solidified, the group moved to address the crystallizing warning, shifting from passive recipients to active participants. Mercer\'s latter instincts gained precedence— the team\'s mandate had evolved, no longer solely to observe and report but to interact and prepare. A metamorphosis had begun, and Operation: Dulce hummed with the newfound frequency of their daring, a tone set not by the earthly\n#############\nOutput:\n("entity"<|>"Washington"<|>"location"<|>"Washington is a location where communications are being received, indicating its importance in the decision-making process.")##\n("entity"<|>"Operation: Dulce"<|>"mission"<|>"Operation: Dulce is described as a mission that has evolved to interact and prepare, indicating a significant shift in objectives and activities.")##\n("entity"<|>"The team"<|>"organization"<|>"The team is portrayed as a group of individuals who have transitioned from passive observers to active participants in a mission, showing a dynamic change in their role.")##\n("relationship"<|>"The team"<|>"Washington"<|>"The team receives communications from Washington, which influences their decision-making process."<|>7)##\n("relationship"<|>"The team"<|>"Operation: Dulce"<|>"The team is directly involved in Operation: Dulce, executing its evolved objectives and activities."<|>9)<|COMPLETE|>\n#############################\nExample 3:\n\nEntity_types: [person, role, technology, organization, event, location, concept]\nText:\ntheir voice slicing through the buzz of activity. "Control may be an illusion when facing an intelligence that literally writes its own rules," they stated stoically, casting a watchful eye over the flurry of data.\n\n"It\'s like it\'s learning to communicate," offered Sam Rivera from a nearby interface, their youthful energy boding a mix of awe and anxiety. "This gives talking to strangers\' a whole new meaning."\n\nAlex surveyed his team—each face a study in concentration, determination, and not a small measure of trepidation. "This might well be our first contact," he acknowledged, "And we need to be ready for whatever answers back."\n\nTogether, they stood on the edge of the unknown, forging humanity\'s response to a message from the heavens. The ensuing silence was palpable—a collective introspection about their role in this grand cosmic play, one that could rewrite human history.\n\nThe encrypted dialogue continued to unfold, its intricate patterns showing an almost uncanny anticipation\n#############\nOutput:\n("entity"<|>"Sam Rivera"<|>"person"<|>"Sam Rivera is a member of a team working on communicating with an unknown intelligence, showing a mix of awe and anxiety.")##\n("entity"<|>"Alex"<|>"person"<|>"Alex is the leader of a team attempting first contact with an unknown intelligence, acknowledging the significance of their task.")##\n("entity"<|>"Control"<|>"concept"<|>"Control refers to the ability to manage or govern, which is challenged by an intelligence that writes its own rules.")##\n("entity"<|>"Intelligence"<|>"concept"<|>"Intelligence here refers to an unknown entity capable of writing its own rules and learning to communicate.")##\n("entity"<|>"First Contact"<|>"event"<|>"First Contact is the potential initial communication between humanity and an unknown intelligence.")##\n("entity"<|>"Humanity\'s Response"<|>"event"<|>"Humanity\'s Response is the collective action taken by Alex\'s team in response to a message from an unknown intelligence.")##\n("relationship"<|>"Sam Rivera"<|>"Intelligence"<|>"Sam Rivera is directly involved in the process of learning to communicate with the unknown intelligence."<|>9)##\n("relationship"<|>"Alex"<|>"First Contact"<|>"Alex leads the team that might be making the First Contact with the unknown intelligence."<|>10)##\n("relationship"<|>"Alex"<|>"Humanity\'s Response"<|>"Alex and his team are the key figures in Humanity\'s Response to the unknown intelligence."<|>8)##\n("relationship"<|>"Control"<|>"Intelligence"<|>"The concept of Control is challenged by the Intelligence that writes its own rules."<|>7)<|COMPLETE|>\n#############################\n-Real Data-\n######################\nEntity_types: organization,person,geo,event\nText: 实际开发的时候，我们总是使用一个文本编辑器来写代码，写完了，保存为一个文件，这样，程序就可以反复运行了。\n现在，我们就把上次的\'hello, world\'程序用文本编辑器写出来，保存下来。\n那么问题来了：文本编辑器到底哪家强？\n我们推荐微软出品的Visual Studio Code，它不是那个大块头的Visual Studio，它是一个精简版的迷你Visual Studio，并且，Visual Studio Code可以跨平台！Windows、Mac和Linux通用。\n请注意，不要用Word和Windows自带的记事本。Word保存的不是纯文本文件，而记事本会自作聪明地在文件开始的地方加上几个特殊字符（UTF-8 BOM），结果会导致程序运行出现莫名其妙的错误。\n安装好文本编辑器后，输入以下代码：\n注意print前面不要有任何空格。然后，选择一个目录，例如C:\\work，把文件保存为hello.py，就可以打开命令行窗口，把当前目\n######################\nOutput:'}
+12:41:02,923 root ERROR error extracting graph
+Traceback (most recent call last):
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\index\graph\extractors\graph\graph_extractor.py", line 118, in __call__
+    result = await self._process_document(text, prompt_variables)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\index\graph\extractors\graph\graph_extractor.py", line 146, in _process_document
+    response = await self._llm(
+               ^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\openai\json_parsing_llm.py", line 34, in __call__
+    result = await self._delegate(input, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\openai\openai_token_replacing_llm.py", line 37, in __call__
+    return await self._delegate(input, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\openai\openai_history_tracking_llm.py", line 33, in __call__
+    output = await self._delegate(input, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\caching_llm.py", line 104, in __call__
+    result = await self._delegate(input, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\rate_limiting_llm.py", line 177, in __call__
+    result, start = await execute_with_retry()
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\rate_limiting_llm.py", line 159, in execute_with_retry
+    async for attempt in retryer:
+  File "C:\Tool\Anaconda3\Lib\site-packages\tenacity\asyncio\__init__.py", line 166, in __anext__
+    do = await self.iter(retry_state=self._retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\tenacity\asyncio\__init__.py", line 153, in iter
+    result = await action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\tenacity\_utils.py", line 99, in inner
+    return call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\tenacity\__init__.py", line 398, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+                                     ^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\concurrent\futures\_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\rate_limiting_llm.py", line 165, in execute_with_retry
+    return await do_attempt(), start
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\rate_limiting_llm.py", line 147, in do_attempt
+    return await self._delegate(input, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\base_llm.py", line 49, in __call__
+    return await self._invoke(input, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\base_llm.py", line 53, in _invoke
+    output = await self._execute_llm(input, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\openai\openai_chat_llm.py", line 55, in _execute_llm
+    completion = await self.client.chat.completions.create(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\openai\resources\chat\completions\completions.py", line 1927, in create
+    return await self._post(
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\openai\_base_client.py", line 1856, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\openai\_base_client.py", line 1550, in request
+    return await self._request(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\openai\_base_client.py", line 1651, in _request
+    raise self._make_status_error_from_response(err.response) from None
+openai.NotFoundError: 404 page not found
+12:41:02,923 graphrag.index.reporting.file_workflow_callbacks INFO Entity Extraction Error details={'doc_index': 0, 'text': "实际开发的时候，我们总是使用一个文本编辑器来写代码，写完了，保存为一个文件，这样，程序就可以反复运行了。\n现在，我们就把上次的'hello, world'程序用文本编辑器写出来，保存下来。\n那么问题来了：文本编辑器到底哪家强？\n我们推荐微软出品的Visual Studio Code，它不是那个大块头的Visual Studio，它是一个精简版的迷你Visual Studio，并且，Visual Studio Code可以跨平台！Windows、Mac和Linux通用。\n请注意，不要用Word和Windows自带的记事本。Word保存的不是纯文本文件，而记事本会自作聪明地在文件开始的地方加上几个特殊字符（UTF-8 BOM），结果会导致程序运行出现莫名其妙的错误。\n安装好文本编辑器后，输入以下代码：\n注意print前面不要有任何空格。然后，选择一个目录，例如C:\\work，把文件保存为hello.py，就可以打开命令行窗口，把当前目"}
+12:41:02,925 httpx INFO HTTP Request: POST https://api.siliconflow.cn/v1/chat/completions/chat/completions "HTTP/1.1 404 404 Page not found"
+12:41:02,925 graphrag.index.reporting.file_workflow_callbacks INFO Error Invoking LLM details={'input': '\n-Goal-\nGiven a text document that is potentially relevant to this activity and a list of entity types, identify all entities of those types from the text and all relationships among the identified entities.\n\n-Steps-\n1. Identify all entities. For each identified entity, extract the following information:\n- entity_name: Name of the entity, capitalized\n- entity_type: One of the following types: [organization,person,geo,event]\n- entity_description: Comprehensive description of the entity\'s attributes and activities\nFormat each entity as ("entity"<|><entity_name><|><entity_type><|><entity_description>\n\n2. From the entities identified in step 1, identify all pairs of (source_entity, target_entity) that are *clearly related* to each other.\nFor each pair of related entities, extract the following information:\n- source_entity: name of the source entity, as identified in step 1\n- target_entity: name of the target entity, as identified in step 1\n- relationship_description: explanation as to why you think the source entity and the target entity are related to each other\n- relationship_strength: a numeric score indicating strength of the relationship between the source entity and target entity\n Format each relationship as ("relationship"<|><source_entity><|><target_entity><|><relationship_description><|><relationship_strength>)\n\n3. Return output in English as a single list of all the entities and relationships identified in steps 1 and 2. Use **##** as the list delimiter.\n\n4. When finished, output <|COMPLETE|>\n\n######################\n-Examples-\n######################\nExample 1:\n\nEntity_types: [person, technology, mission, organization, location]\nText:\nwhile Alex clenched his jaw, the buzz of frustration dull against the backdrop of Taylor\'s authoritarian certainty. It was this competitive undercurrent that kept him alert, the sense that his and Jordan\'s shared commitment to discovery was an unspoken rebellion against Cruz\'s narrowing vision of control and order.\n\nThen Taylor did something unexpected. They paused beside Jordan and, for a moment, observed the device with something akin to reverence. “If this tech can be understood..." Taylor said, their voice quieter, "It could change the game for us. For all of us.”\n\nThe underlying dismissal earlier seemed to falter, replaced by a glimpse of reluctant respect for the gravity of what lay in their hands. Jordan looked up, and for a fleeting heartbeat, their eyes locked with Taylor\'s, a wordless clash of wills softening into an uneasy truce.\n\nIt was a small transformation, barely perceptible, but one that Alex noted with an inward nod. They had all been brought here by different paths\n################\nOutput:\n("entity"<|>"Alex"<|>"person"<|>"Alex is a character who experiences frustration and is observant of the dynamics among other characters.")##\n("entity"<|>"Taylor"<|>"person"<|>"Taylor is portrayed with authoritarian certainty and shows a moment of reverence towards a device, indicating a change in perspective.")##\n("entity"<|>"Jordan"<|>"person"<|>"Jordan shares a commitment to discovery and has a significant interaction with Taylor regarding a device.")##\n("entity"<|>"Cruz"<|>"person"<|>"Cruz is associated with a vision of control and order, influencing the dynamics among other characters.")##\n("entity"<|>"The Device"<|>"technology"<|>"The Device is central to the story, with potential game-changing implications, and is revered by Taylor.")##\n("relationship"<|>"Alex"<|>"Taylor"<|>"Alex is affected by Taylor\'s authoritarian certainty and observes changes in Taylor\'s attitude towards the device."<|>7)##\n("relationship"<|>"Alex"<|>"Jordan"<|>"Alex and Jordan share a commitment to discovery, which contrasts with Cruz\'s vision."<|>6)##\n("relationship"<|>"Taylor"<|>"Jordan"<|>"Taylor and Jordan interact directly regarding the device, leading to a moment of mutual respect and an uneasy truce."<|>8)##\n("relationship"<|>"Jordan"<|>"Cruz"<|>"Jordan\'s commitment to discovery is in rebellion against Cruz\'s vision of control and order."<|>5)##\n("relationship"<|>"Taylor"<|>"The Device"<|>"Taylor shows reverence towards the device, indicating its importance and potential impact."<|>9)<|COMPLETE|>\n#############################\nExample 2:\n\nEntity_types: [person, technology, mission, organization, location]\nText:\nThey were no longer mere operatives; they had become guardians of a threshold, keepers of a message from a realm beyond stars and stripes. This elevation in their mission could not be shackled by regulations and established protocols—it demanded a new perspective, a new resolve.\n\nTension threaded through the dialogue of beeps and static as communications with Washington buzzed in the background. The team stood, a portentous air enveloping them. It was clear that the decisions they made in the ensuing hours could redefine humanity\'s place in the cosmos or condemn them to ignorance and potential peril.\n\nTheir connection to the stars solidified, the group moved to address the crystallizing warning, shifting from passive recipients to active participants. Mercer\'s latter instincts gained precedence— the team\'s mandate had evolved, no longer solely to observe and report but to interact and prepare. A metamorphosis had begun, and Operation: Dulce hummed with the newfound frequency of their daring, a tone set not by the earthly\n#############\nOutput:\n("entity"<|>"Washington"<|>"location"<|>"Washington is a location where communications are being received, indicating its importance in the decision-making process.")##\n("entity"<|>"Operation: Dulce"<|>"mission"<|>"Operation: Dulce is described as a mission that has evolved to interact and prepare, indicating a significant shift in objectives and activities.")##\n("entity"<|>"The team"<|>"organization"<|>"The team is portrayed as a group of individuals who have transitioned from passive observers to active participants in a mission, showing a dynamic change in their role.")##\n("relationship"<|>"The team"<|>"Washington"<|>"The team receives communications from Washington, which influences their decision-making process."<|>7)##\n("relationship"<|>"The team"<|>"Operation: Dulce"<|>"The team is directly involved in Operation: Dulce, executing its evolved objectives and activities."<|>9)<|COMPLETE|>\n#############################\nExample 3:\n\nEntity_types: [person, role, technology, organization, event, location, concept]\nText:\ntheir voice slicing through the buzz of activity. "Control may be an illusion when facing an intelligence that literally writes its own rules," they stated stoically, casting a watchful eye over the flurry of data.\n\n"It\'s like it\'s learning to communicate," offered Sam Rivera from a nearby interface, their youthful energy boding a mix of awe and anxiety. "This gives talking to strangers\' a whole new meaning."\n\nAlex surveyed his team—each face a study in concentration, determination, and not a small measure of trepidation. "This might well be our first contact," he acknowledged, "And we need to be ready for whatever answers back."\n\nTogether, they stood on the edge of the unknown, forging humanity\'s response to a message from the heavens. The ensuing silence was palpable—a collective introspection about their role in this grand cosmic play, one that could rewrite human history.\n\nThe encrypted dialogue continued to unfold, its intricate patterns showing an almost uncanny anticipation\n#############\nOutput:\n("entity"<|>"Sam Rivera"<|>"person"<|>"Sam Rivera is a member of a team working on communicating with an unknown intelligence, showing a mix of awe and anxiety.")##\n("entity"<|>"Alex"<|>"person"<|>"Alex is the leader of a team attempting first contact with an unknown intelligence, acknowledging the significance of their task.")##\n("entity"<|>"Control"<|>"concept"<|>"Control refers to the ability to manage or govern, which is challenged by an intelligence that writes its own rules.")##\n("entity"<|>"Intelligence"<|>"concept"<|>"Intelligence here refers to an unknown entity capable of writing its own rules and learning to communicate.")##\n("entity"<|>"First Contact"<|>"event"<|>"First Contact is the potential initial communication between humanity and an unknown intelligence.")##\n("entity"<|>"Humanity\'s Response"<|>"event"<|>"Humanity\'s Response is the collective action taken by Alex\'s team in response to a message from an unknown intelligence.")##\n("relationship"<|>"Sam Rivera"<|>"Intelligence"<|>"Sam Rivera is directly involved in the process of learning to communicate with the unknown intelligence."<|>9)##\n("relationship"<|>"Alex"<|>"First Contact"<|>"Alex leads the team that might be making the First Contact with the unknown intelligence."<|>10)##\n("relationship"<|>"Alex"<|>"Humanity\'s Response"<|>"Alex and his team are the key figures in Humanity\'s Response to the unknown intelligence."<|>8)##\n("relationship"<|>"Control"<|>"Intelligence"<|>"The concept of Control is challenged by the Intelligence that writes its own rules."<|>7)<|COMPLETE|>\n#############################\n-Real Data-\n######################\nEntity_types: organization,person,geo,event\nText: 了。\n######################\nOutput:'}
+12:41:02,925 root ERROR error extracting graph
+Traceback (most recent call last):
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\index\graph\extractors\graph\graph_extractor.py", line 118, in __call__
+    result = await self._process_document(text, prompt_variables)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\index\graph\extractors\graph\graph_extractor.py", line 146, in _process_document
+    response = await self._llm(
+               ^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\openai\json_parsing_llm.py", line 34, in __call__
+    result = await self._delegate(input, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\openai\openai_token_replacing_llm.py", line 37, in __call__
+    return await self._delegate(input, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\openai\openai_history_tracking_llm.py", line 33, in __call__
+    output = await self._delegate(input, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\caching_llm.py", line 104, in __call__
+    result = await self._delegate(input, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\rate_limiting_llm.py", line 177, in __call__
+    result, start = await execute_with_retry()
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\rate_limiting_llm.py", line 159, in execute_with_retry
+    async for attempt in retryer:
+  File "C:\Tool\Anaconda3\Lib\site-packages\tenacity\asyncio\__init__.py", line 166, in __anext__
+    do = await self.iter(retry_state=self._retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\tenacity\asyncio\__init__.py", line 153, in iter
+    result = await action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\tenacity\_utils.py", line 99, in inner
+    return call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\tenacity\__init__.py", line 398, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+                                     ^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\concurrent\futures\_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\rate_limiting_llm.py", line 165, in execute_with_retry
+    return await do_attempt(), start
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\rate_limiting_llm.py", line 147, in do_attempt
+    return await self._delegate(input, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\base_llm.py", line 49, in __call__
+    return await self._invoke(input, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\base_llm.py", line 53, in _invoke
+    output = await self._execute_llm(input, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\openai\openai_chat_llm.py", line 55, in _execute_llm
+    completion = await self.client.chat.completions.create(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\openai\resources\chat\completions\completions.py", line 1927, in create
+    return await self._post(
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\openai\_base_client.py", line 1856, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\openai\_base_client.py", line 1550, in request
+    return await self._request(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\openai\_base_client.py", line 1651, in _request
+    raise self._make_status_error_from_response(err.response) from None
+openai.NotFoundError: 404 page not found
+12:41:02,927 graphrag.index.reporting.file_workflow_callbacks INFO Entity Extraction Error details={'doc_index': 0, 'text': '了。'}
+12:41:02,929 graphrag.index.reporting.file_workflow_callbacks INFO Error Invoking LLM details={'input': '\n-Goal-\nGiven a text document that is potentially relevant to this activity and a list of entity types, identify all entities of those types from the text and all relationships among the identified entities.\n\n-Steps-\n1. Identify all entities. For each identified entity, extract the following information:\n- entity_name: Name of the entity, capitalized\n- entity_type: One of the following types: [organization,person,geo,event]\n- entity_description: Comprehensive description of the entity\'s attributes and activities\nFormat each entity as ("entity"<|><entity_name><|><entity_type><|><entity_description>\n\n2. From the entities identified in step 1, identify all pairs of (source_entity, target_entity) that are *clearly related* to each other.\nFor each pair of related entities, extract the following information:\n- source_entity: name of the source entity, as identified in step 1\n- target_entity: name of the target entity, as identified in step 1\n- relationship_description: explanation as to why you think the source entity and the target entity are related to each other\n- relationship_strength: a numeric score indicating strength of the relationship between the source entity and target entity\n Format each relationship as ("relationship"<|><source_entity><|><target_entity><|><relationship_description><|><relationship_strength>)\n\n3. Return output in English as a single list of all the entities and relationships identified in steps 1 and 2. Use **##** as the list delimiter.\n\n4. When finished, output <|COMPLETE|>\n\n######################\n-Examples-\n######################\nExample 1:\n\nEntity_types: [person, technology, mission, organization, location]\nText:\nwhile Alex clenched his jaw, the buzz of frustration dull against the backdrop of Taylor\'s authoritarian certainty. It was this competitive undercurrent that kept him alert, the sense that his and Jordan\'s shared commitment to discovery was an unspoken rebellion against Cruz\'s narrowing vision of control and order.\n\nThen Taylor did something unexpected. They paused beside Jordan and, for a moment, observed the device with something akin to reverence. “If this tech can be understood..." Taylor said, their voice quieter, "It could change the game for us. For all of us.”\n\nThe underlying dismissal earlier seemed to falter, replaced by a glimpse of reluctant respect for the gravity of what lay in their hands. Jordan looked up, and for a fleeting heartbeat, their eyes locked with Taylor\'s, a wordless clash of wills softening into an uneasy truce.\n\nIt was a small transformation, barely perceptible, but one that Alex noted with an inward nod. They had all been brought here by different paths\n################\nOutput:\n("entity"<|>"Alex"<|>"person"<|>"Alex is a character who experiences frustration and is observant of the dynamics among other characters.")##\n("entity"<|>"Taylor"<|>"person"<|>"Taylor is portrayed with authoritarian certainty and shows a moment of reverence towards a device, indicating a change in perspective.")##\n("entity"<|>"Jordan"<|>"person"<|>"Jordan shares a commitment to discovery and has a significant interaction with Taylor regarding a device.")##\n("entity"<|>"Cruz"<|>"person"<|>"Cruz is associated with a vision of control and order, influencing the dynamics among other characters.")##\n("entity"<|>"The Device"<|>"technology"<|>"The Device is central to the story, with potential game-changing implications, and is revered by Taylor.")##\n("relationship"<|>"Alex"<|>"Taylor"<|>"Alex is affected by Taylor\'s authoritarian certainty and observes changes in Taylor\'s attitude towards the device."<|>7)##\n("relationship"<|>"Alex"<|>"Jordan"<|>"Alex and Jordan share a commitment to discovery, which contrasts with Cruz\'s vision."<|>6)##\n("relationship"<|>"Taylor"<|>"Jordan"<|>"Taylor and Jordan interact directly regarding the device, leading to a moment of mutual respect and an uneasy truce."<|>8)##\n("relationship"<|>"Jordan"<|>"Cruz"<|>"Jordan\'s commitment to discovery is in rebellion against Cruz\'s vision of control and order."<|>5)##\n("relationship"<|>"Taylor"<|>"The Device"<|>"Taylor shows reverence towards the device, indicating its importance and potential impact."<|>9)<|COMPLETE|>\n#############################\nExample 2:\n\nEntity_types: [person, technology, mission, organization, location]\nText:\nThey were no longer mere operatives; they had become guardians of a threshold, keepers of a message from a realm beyond stars and stripes. This elevation in their mission could not be shackled by regulations and established protocols—it demanded a new perspective, a new resolve.\n\nTension threaded through the dialogue of beeps and static as communications with Washington buzzed in the background. The team stood, a portentous air enveloping them. It was clear that the decisions they made in the ensuing hours could redefine humanity\'s place in the cosmos or condemn them to ignorance and potential peril.\n\nTheir connection to the stars solidified, the group moved to address the crystallizing warning, shifting from passive recipients to active participants. Mercer\'s latter instincts gained precedence— the team\'s mandate had evolved, no longer solely to observe and report but to interact and prepare. A metamorphosis had begun, and Operation: Dulce hummed with the newfound frequency of their daring, a tone set not by the earthly\n#############\nOutput:\n("entity"<|>"Washington"<|>"location"<|>"Washington is a location where communications are being received, indicating its importance in the decision-making process.")##\n("entity"<|>"Operation: Dulce"<|>"mission"<|>"Operation: Dulce is described as a mission that has evolved to interact and prepare, indicating a significant shift in objectives and activities.")##\n("entity"<|>"The team"<|>"organization"<|>"The team is portrayed as a group of individuals who have transitioned from passive observers to active participants in a mission, showing a dynamic change in their role.")##\n("relationship"<|>"The team"<|>"Washington"<|>"The team receives communications from Washington, which influences their decision-making process."<|>7)##\n("relationship"<|>"The team"<|>"Operation: Dulce"<|>"The team is directly involved in Operation: Dulce, executing its evolved objectives and activities."<|>9)<|COMPLETE|>\n#############################\nExample 3:\n\nEntity_types: [person, role, technology, organization, event, location, concept]\nText:\ntheir voice slicing through the buzz of activity. "Control may be an illusion when facing an intelligence that literally writes its own rules," they stated stoically, casting a watchful eye over the flurry of data.\n\n"It\'s like it\'s learning to communicate," offered Sam Rivera from a nearby interface, their youthful energy boding a mix of awe and anxiety. "This gives talking to strangers\' a whole new meaning."\n\nAlex surveyed his team—each face a study in concentration, determination, and not a small measure of trepidation. "This might well be our first contact," he acknowledged, "And we need to be ready for whatever answers back."\n\nTogether, they stood on the edge of the unknown, forging humanity\'s response to a message from the heavens. The ensuing silence was palpable—a collective introspection about their role in this grand cosmic play, one that could rewrite human history.\n\nThe encrypted dialogue continued to unfold, its intricate patterns showing an almost uncanny anticipation\n#############\nOutput:\n("entity"<|>"Sam Rivera"<|>"person"<|>"Sam Rivera is a member of a team working on communicating with an unknown intelligence, showing a mix of awe and anxiety.")##\n("entity"<|>"Alex"<|>"person"<|>"Alex is the leader of a team attempting first contact with an unknown intelligence, acknowledging the significance of their task.")##\n("entity"<|>"Control"<|>"concept"<|>"Control refers to the ability to manage or govern, which is challenged by an intelligence that writes its own rules.")##\n("entity"<|>"Intelligence"<|>"concept"<|>"Intelligence here refers to an unknown entity capable of writing its own rules and learning to communicate.")##\n("entity"<|>"First Contact"<|>"event"<|>"First Contact is the potential initial communication between humanity and an unknown intelligence.")##\n("entity"<|>"Humanity\'s Response"<|>"event"<|>"Humanity\'s Response is the collective action taken by Alex\'s team in response to a message from an unknown intelligence.")##\n("relationship"<|>"Sam Rivera"<|>"Intelligence"<|>"Sam Rivera is directly involved in the process of learning to communicate with the unknown intelligence."<|>9)##\n("relationship"<|>"Alex"<|>"First Contact"<|>"Alex leads the team that might be making the First Contact with the unknown intelligence."<|>10)##\n("relationship"<|>"Alex"<|>"Humanity\'s Response"<|>"Alex and his team are the key figures in Humanity\'s Response to the unknown intelligence."<|>8)##\n("relationship"<|>"Control"<|>"Intelligence"<|>"The concept of Control is challenged by the Intelligence that writes its own rules."<|>7)<|COMPLETE|>\n#############################\n-Real Data-\n######################\nEntity_types: organization,person,geo,event\nText: 编程语言。计算机编程语言和我们日常使用的自然语言有所不同，最大的区别就是，自然语言在不同的语境下有不同的理解，而计算机要根据编程语言执行任务，就必须保证编程语言写出的程序决不能有歧义，所以，任何一种编程语言都有自己的一套语法，编译器或者解释器就是负责把符合语法的程序代码转换成CPU能够执行的机器码，然后执行。Python也不例外。\nPython的语法比较简单，采用缩进方式，写出来的代码就像下面的样子：\n以#开头的语句是注释，注释是给人看的，可以是任意内容，解释器会忽略掉注释。其他每一行都是一个语句，当语句以冒号:结尾时，缩进的语句视为代码块。\n缩进有利有弊。好处是强迫你写出格式化的代码，但没有规定缩进是\n######################\nOutput:'}
+12:41:02,929 root ERROR error extracting graph
+Traceback (most recent call last):
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\index\graph\extractors\graph\graph_extractor.py", line 118, in __call__
+    result = await self._process_document(text, prompt_variables)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\index\graph\extractors\graph\graph_extractor.py", line 146, in _process_document
+    response = await self._llm(
+               ^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\openai\json_parsing_llm.py", line 34, in __call__
+    result = await self._delegate(input, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\openai\openai_token_replacing_llm.py", line 37, in __call__
+    return await self._delegate(input, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\openai\openai_history_tracking_llm.py", line 33, in __call__
+    output = await self._delegate(input, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\caching_llm.py", line 104, in __call__
+    result = await self._delegate(input, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\rate_limiting_llm.py", line 177, in __call__
+    result, start = await execute_with_retry()
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\rate_limiting_llm.py", line 159, in execute_with_retry
+    async for attempt in retryer:
+  File "C:\Tool\Anaconda3\Lib\site-packages\tenacity\asyncio\__init__.py", line 166, in __anext__
+    do = await self.iter(retry_state=self._retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\tenacity\asyncio\__init__.py", line 153, in iter
+    result = await action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\tenacity\_utils.py", line 99, in inner
+    return call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\tenacity\__init__.py", line 398, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+                                     ^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\concurrent\futures\_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\rate_limiting_llm.py", line 165, in execute_with_retry
+    return await do_attempt(), start
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\rate_limiting_llm.py", line 147, in do_attempt
+    return await self._delegate(input, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\base_llm.py", line 49, in __call__
+    return await self._invoke(input, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\base_llm.py", line 53, in _invoke
+    output = await self._execute_llm(input, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\openai\openai_chat_llm.py", line 55, in _execute_llm
+    completion = await self.client.chat.completions.create(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\openai\resources\chat\completions\completions.py", line 1927, in create
+    return await self._post(
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\openai\_base_client.py", line 1856, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\openai\_base_client.py", line 1550, in request
+    return await self._request(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\openai\_base_client.py", line 1651, in _request
+    raise self._make_status_error_from_response(err.response) from None
+openai.NotFoundError: 404 page not found
+12:41:02,932 graphrag.index.reporting.file_workflow_callbacks INFO Entity Extraction Error details={'doc_index': 0, 'text': '编程语言。计算机编程语言和我们日常使用的自然语言有所不同，最大的区别就是，自然语言在不同的语境下有不同的理解，而计算机要根据编程语言执行任务，就必须保证编程语言写出的程序决不能有歧义，所以，任何一种编程语言都有自己的一套语法，编译器或者解释器就是负责把符合语法的程序代码转换成CPU能够执行的机器码，然后执行。Python也不例外。\nPython的语法比较简单，采用缩进方式，写出来的代码就像下面的样子：\n以#开头的语句是注释，注释是给人看的，可以是任意内容，解释器会忽略掉注释。其他每一行都是一个语句，当语句以冒号:结尾时，缩进的语句视为代码块。\n缩进有利有弊。好处是强迫你写出格式化的代码，但没有规定缩进是'}
+12:41:02,932 httpx INFO HTTP Request: POST https://api.siliconflow.cn/v1/chat/completions/chat/completions "HTTP/1.1 404 404 Page not found"
+12:41:02,932 graphrag.index.reporting.file_workflow_callbacks INFO Error Invoking LLM details={'input': '\n-Goal-\nGiven a text document that is potentially relevant to this activity and a list of entity types, identify all entities of those types from the text and all relationships among the identified entities.\n\n-Steps-\n1. Identify all entities. For each identified entity, extract the following information:\n- entity_name: Name of the entity, capitalized\n- entity_type: One of the following types: [organization,person,geo,event]\n- entity_description: Comprehensive description of the entity\'s attributes and activities\nFormat each entity as ("entity"<|><entity_name><|><entity_type><|><entity_description>\n\n2. From the entities identified in step 1, identify all pairs of (source_entity, target_entity) that are *clearly related* to each other.\nFor each pair of related entities, extract the following information:\n- source_entity: name of the source entity, as identified in step 1\n- target_entity: name of the target entity, as identified in step 1\n- relationship_description: explanation as to why you think the source entity and the target entity are related to each other\n- relationship_strength: a numeric score indicating strength of the relationship between the source entity and target entity\n Format each relationship as ("relationship"<|><source_entity><|><target_entity><|><relationship_description><|><relationship_strength>)\n\n3. Return output in English as a single list of all the entities and relationships identified in steps 1 and 2. Use **##** as the list delimiter.\n\n4. When finished, output <|COMPLETE|>\n\n######################\n-Examples-\n######################\nExample 1:\n\nEntity_types: [person, technology, mission, organization, location]\nText:\nwhile Alex clenched his jaw, the buzz of frustration dull against the backdrop of Taylor\'s authoritarian certainty. It was this competitive undercurrent that kept him alert, the sense that his and Jordan\'s shared commitment to discovery was an unspoken rebellion against Cruz\'s narrowing vision of control and order.\n\nThen Taylor did something unexpected. They paused beside Jordan and, for a moment, observed the device with something akin to reverence. “If this tech can be understood..." Taylor said, their voice quieter, "It could change the game for us. For all of us.”\n\nThe underlying dismissal earlier seemed to falter, replaced by a glimpse of reluctant respect for the gravity of what lay in their hands. Jordan looked up, and for a fleeting heartbeat, their eyes locked with Taylor\'s, a wordless clash of wills softening into an uneasy truce.\n\nIt was a small transformation, barely perceptible, but one that Alex noted with an inward nod. They had all been brought here by different paths\n################\nOutput:\n("entity"<|>"Alex"<|>"person"<|>"Alex is a character who experiences frustration and is observant of the dynamics among other characters.")##\n("entity"<|>"Taylor"<|>"person"<|>"Taylor is portrayed with authoritarian certainty and shows a moment of reverence towards a device, indicating a change in perspective.")##\n("entity"<|>"Jordan"<|>"person"<|>"Jordan shares a commitment to discovery and has a significant interaction with Taylor regarding a device.")##\n("entity"<|>"Cruz"<|>"person"<|>"Cruz is associated with a vision of control and order, influencing the dynamics among other characters.")##\n("entity"<|>"The Device"<|>"technology"<|>"The Device is central to the story, with potential game-changing implications, and is revered by Taylor.")##\n("relationship"<|>"Alex"<|>"Taylor"<|>"Alex is affected by Taylor\'s authoritarian certainty and observes changes in Taylor\'s attitude towards the device."<|>7)##\n("relationship"<|>"Alex"<|>"Jordan"<|>"Alex and Jordan share a commitment to discovery, which contrasts with Cruz\'s vision."<|>6)##\n("relationship"<|>"Taylor"<|>"Jordan"<|>"Taylor and Jordan interact directly regarding the device, leading to a moment of mutual respect and an uneasy truce."<|>8)##\n("relationship"<|>"Jordan"<|>"Cruz"<|>"Jordan\'s commitment to discovery is in rebellion against Cruz\'s vision of control and order."<|>5)##\n("relationship"<|>"Taylor"<|>"The Device"<|>"Taylor shows reverence towards the device, indicating its importance and potential impact."<|>9)<|COMPLETE|>\n#############################\nExample 2:\n\nEntity_types: [person, technology, mission, organization, location]\nText:\nThey were no longer mere operatives; they had become guardians of a threshold, keepers of a message from a realm beyond stars and stripes. This elevation in their mission could not be shackled by regulations and established protocols—it demanded a new perspective, a new resolve.\n\nTension threaded through the dialogue of beeps and static as communications with Washington buzzed in the background. The team stood, a portentous air enveloping them. It was clear that the decisions they made in the ensuing hours could redefine humanity\'s place in the cosmos or condemn them to ignorance and potential peril.\n\nTheir connection to the stars solidified, the group moved to address the crystallizing warning, shifting from passive recipients to active participants. Mercer\'s latter instincts gained precedence— the team\'s mandate had evolved, no longer solely to observe and report but to interact and prepare. A metamorphosis had begun, and Operation: Dulce hummed with the newfound frequency of their daring, a tone set not by the earthly\n#############\nOutput:\n("entity"<|>"Washington"<|>"location"<|>"Washington is a location where communications are being received, indicating its importance in the decision-making process.")##\n("entity"<|>"Operation: Dulce"<|>"mission"<|>"Operation: Dulce is described as a mission that has evolved to interact and prepare, indicating a significant shift in objectives and activities.")##\n("entity"<|>"The team"<|>"organization"<|>"The team is portrayed as a group of individuals who have transitioned from passive observers to active participants in a mission, showing a dynamic change in their role.")##\n("relationship"<|>"The team"<|>"Washington"<|>"The team receives communications from Washington, which influences their decision-making process."<|>7)##\n("relationship"<|>"The team"<|>"Operation: Dulce"<|>"The team is directly involved in Operation: Dulce, executing its evolved objectives and activities."<|>9)<|COMPLETE|>\n#############################\nExample 3:\n\nEntity_types: [person, role, technology, organization, event, location, concept]\nText:\ntheir voice slicing through the buzz of activity. "Control may be an illusion when facing an intelligence that literally writes its own rules," they stated stoically, casting a watchful eye over the flurry of data.\n\n"It\'s like it\'s learning to communicate," offered Sam Rivera from a nearby interface, their youthful energy boding a mix of awe and anxiety. "This gives talking to strangers\' a whole new meaning."\n\nAlex surveyed his team—each face a study in concentration, determination, and not a small measure of trepidation. "This might well be our first contact," he acknowledged, "And we need to be ready for whatever answers back."\n\nTogether, they stood on the edge of the unknown, forging humanity\'s response to a message from the heavens. The ensuing silence was palpable—a collective introspection about their role in this grand cosmic play, one that could rewrite human history.\n\nThe encrypted dialogue continued to unfold, its intricate patterns showing an almost uncanny anticipation\n#############\nOutput:\n("entity"<|>"Sam Rivera"<|>"person"<|>"Sam Rivera is a member of a team working on communicating with an unknown intelligence, showing a mix of awe and anxiety.")##\n("entity"<|>"Alex"<|>"person"<|>"Alex is the leader of a team attempting first contact with an unknown intelligence, acknowledging the significance of their task.")##\n("entity"<|>"Control"<|>"concept"<|>"Control refers to the ability to manage or govern, which is challenged by an intelligence that writes its own rules.")##\n("entity"<|>"Intelligence"<|>"concept"<|>"Intelligence here refers to an unknown entity capable of writing its own rules and learning to communicate.")##\n("entity"<|>"First Contact"<|>"event"<|>"First Contact is the potential initial communication between humanity and an unknown intelligence.")##\n("entity"<|>"Humanity\'s Response"<|>"event"<|>"Humanity\'s Response is the collective action taken by Alex\'s team in response to a message from an unknown intelligence.")##\n("relationship"<|>"Sam Rivera"<|>"Intelligence"<|>"Sam Rivera is directly involved in the process of learning to communicate with the unknown intelligence."<|>9)##\n("relationship"<|>"Alex"<|>"First Contact"<|>"Alex leads the team that might be making the First Contact with the unknown intelligence."<|>10)##\n("relationship"<|>"Alex"<|>"Humanity\'s Response"<|>"Alex and his team are the key figures in Humanity\'s Response to the unknown intelligence."<|>8)##\n("relationship"<|>"Control"<|>"Intelligence"<|>"The concept of Control is challenged by the Intelligence that writes its own rules."<|>7)<|COMPLETE|>\n#############################\n-Real Data-\n######################\nEntity_types: organization,person,geo,event\nText: else ...判断时，会写很长一串代码，可读性较差。\n如果要针对某个变量匹配若干种情况，可以使用match语句。\n例如，某个学生的成绩只能是A、B、C，用if语句编写如下：\n如果用match语句改写，则改写如下：\n使用match语句时，我们依次用case xxx匹配，并且可以在最后（且仅能在最后）加一个case _表示“任意值”，代码较if ... elif ... else ...更易读。\nmatch语句除了可以匹配简单的单个值外，还可以匹配多个值、匹配一定范围，并且把匹配后的值绑定到变量：\n在上面这个示例中，第一个case x if x < 10表示当age < 10成立时匹配，且赋值给变量x，第二个case 10仅匹配单个值，第三个case 11|12|...|18能匹配多个值，用|分隔。\n可见，match语句的case匹\n######################\nOutput:'}
+12:41:02,932 root ERROR error extracting graph
+Traceback (most recent call last):
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\index\graph\extractors\graph\graph_extractor.py", line 118, in __call__
+    result = await self._process_document(text, prompt_variables)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\index\graph\extractors\graph\graph_extractor.py", line 146, in _process_document
+    response = await self._llm(
+               ^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\openai\json_parsing_llm.py", line 34, in __call__
+    result = await self._delegate(input, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\openai\openai_token_replacing_llm.py", line 37, in __call__
+    return await self._delegate(input, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\openai\openai_history_tracking_llm.py", line 33, in __call__
+    output = await self._delegate(input, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\caching_llm.py", line 104, in __call__
+    result = await self._delegate(input, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\rate_limiting_llm.py", line 177, in __call__
+    result, start = await execute_with_retry()
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\rate_limiting_llm.py", line 159, in execute_with_retry
+    async for attempt in retryer:
+  File "C:\Tool\Anaconda3\Lib\site-packages\tenacity\asyncio\__init__.py", line 166, in __anext__
+    do = await self.iter(retry_state=self._retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\tenacity\asyncio\__init__.py", line 153, in iter
+    result = await action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\tenacity\_utils.py", line 99, in inner
+    return call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\tenacity\__init__.py", line 398, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+                                     ^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\concurrent\futures\_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\rate_limiting_llm.py", line 165, in execute_with_retry
+    return await do_attempt(), start
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\rate_limiting_llm.py", line 147, in do_attempt
+    return await self._delegate(input, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\base_llm.py", line 49, in __call__
+    return await self._invoke(input, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\base_llm.py", line 53, in _invoke
+    output = await self._execute_llm(input, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\openai\openai_chat_llm.py", line 55, in _execute_llm
+    completion = await self.client.chat.completions.create(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\openai\resources\chat\completions\completions.py", line 1927, in create
+    return await self._post(
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\openai\_base_client.py", line 1856, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\openai\_base_client.py", line 1550, in request
+    return await self._request(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\openai\_base_client.py", line 1651, in _request
+    raise self._make_status_error_from_response(err.response) from None
+openai.NotFoundError: 404 page not found
+12:41:02,932 graphrag.index.reporting.file_workflow_callbacks INFO Entity Extraction Error details={'doc_index': 0, 'text': 'else ...判断时，会写很长一串代码，可读性较差。\n如果要针对某个变量匹配若干种情况，可以使用match语句。\n例如，某个学生的成绩只能是A、B、C，用if语句编写如下：\n如果用match语句改写，则改写如下：\n使用match语句时，我们依次用case xxx匹配，并且可以在最后（且仅能在最后）加一个case _表示“任意值”，代码较if ... elif ... else ...更易读。\nmatch语句除了可以匹配简单的单个值外，还可以匹配多个值、匹配一定范围，并且把匹配后的值绑定到变量：\n在上面这个示例中，第一个case x if x < 10表示当age < 10成立时匹配，且赋值给变量x，第二个case 10仅匹配单个值，第三个case 11|12|...|18能匹配多个值，用|分隔。\n可见，match语句的case匹'}
+12:41:02,932 graphrag.index.reporting.file_workflow_callbacks INFO Error Invoking LLM details={'input': '\n-Goal-\nGiven a text document that is potentially relevant to this activity and a list of entity types, identify all entities of those types from the text and all relationships among the identified entities.\n\n-Steps-\n1. Identify all entities. For each identified entity, extract the following information:\n- entity_name: Name of the entity, capitalized\n- entity_type: One of the following types: [organization,person,geo,event]\n- entity_description: Comprehensive description of the entity\'s attributes and activities\nFormat each entity as ("entity"<|><entity_name><|><entity_type><|><entity_description>\n\n2. From the entities identified in step 1, identify all pairs of (source_entity, target_entity) that are *clearly related* to each other.\nFor each pair of related entities, extract the following information:\n- source_entity: name of the source entity, as identified in step 1\n- target_entity: name of the target entity, as identified in step 1\n- relationship_description: explanation as to why you think the source entity and the target entity are related to each other\n- relationship_strength: a numeric score indicating strength of the relationship between the source entity and target entity\n Format each relationship as ("relationship"<|><source_entity><|><target_entity><|><relationship_description><|><relationship_strength>)\n\n3. Return output in English as a single list of all the entities and relationships identified in steps 1 and 2. Use **##** as the list delimiter.\n\n4. When finished, output <|COMPLETE|>\n\n######################\n-Examples-\n######################\nExample 1:\n\nEntity_types: [person, technology, mission, organization, location]\nText:\nwhile Alex clenched his jaw, the buzz of frustration dull against the backdrop of Taylor\'s authoritarian certainty. It was this competitive undercurrent that kept him alert, the sense that his and Jordan\'s shared commitment to discovery was an unspoken rebellion against Cruz\'s narrowing vision of control and order.\n\nThen Taylor did something unexpected. They paused beside Jordan and, for a moment, observed the device with something akin to reverence. “If this tech can be understood..." Taylor said, their voice quieter, "It could change the game for us. For all of us.”\n\nThe underlying dismissal earlier seemed to falter, replaced by a glimpse of reluctant respect for the gravity of what lay in their hands. Jordan looked up, and for a fleeting heartbeat, their eyes locked with Taylor\'s, a wordless clash of wills softening into an uneasy truce.\n\nIt was a small transformation, barely perceptible, but one that Alex noted with an inward nod. They had all been brought here by different paths\n################\nOutput:\n("entity"<|>"Alex"<|>"person"<|>"Alex is a character who experiences frustration and is observant of the dynamics among other characters.")##\n("entity"<|>"Taylor"<|>"person"<|>"Taylor is portrayed with authoritarian certainty and shows a moment of reverence towards a device, indicating a change in perspective.")##\n("entity"<|>"Jordan"<|>"person"<|>"Jordan shares a commitment to discovery and has a significant interaction with Taylor regarding a device.")##\n("entity"<|>"Cruz"<|>"person"<|>"Cruz is associated with a vision of control and order, influencing the dynamics among other characters.")##\n("entity"<|>"The Device"<|>"technology"<|>"The Device is central to the story, with potential game-changing implications, and is revered by Taylor.")##\n("relationship"<|>"Alex"<|>"Taylor"<|>"Alex is affected by Taylor\'s authoritarian certainty and observes changes in Taylor\'s attitude towards the device."<|>7)##\n("relationship"<|>"Alex"<|>"Jordan"<|>"Alex and Jordan share a commitment to discovery, which contrasts with Cruz\'s vision."<|>6)##\n("relationship"<|>"Taylor"<|>"Jordan"<|>"Taylor and Jordan interact directly regarding the device, leading to a moment of mutual respect and an uneasy truce."<|>8)##\n("relationship"<|>"Jordan"<|>"Cruz"<|>"Jordan\'s commitment to discovery is in rebellion against Cruz\'s vision of control and order."<|>5)##\n("relationship"<|>"Taylor"<|>"The Device"<|>"Taylor shows reverence towards the device, indicating its importance and potential impact."<|>9)<|COMPLETE|>\n#############################\nExample 2:\n\nEntity_types: [person, technology, mission, organization, location]\nText:\nThey were no longer mere operatives; they had become guardians of a threshold, keepers of a message from a realm beyond stars and stripes. This elevation in their mission could not be shackled by regulations and established protocols—it demanded a new perspective, a new resolve.\n\nTension threaded through the dialogue of beeps and static as communications with Washington buzzed in the background. The team stood, a portentous air enveloping them. It was clear that the decisions they made in the ensuing hours could redefine humanity\'s place in the cosmos or condemn them to ignorance and potential peril.\n\nTheir connection to the stars solidified, the group moved to address the crystallizing warning, shifting from passive recipients to active participants. Mercer\'s latter instincts gained precedence— the team\'s mandate had evolved, no longer solely to observe and report but to interact and prepare. A metamorphosis had begun, and Operation: Dulce hummed with the newfound frequency of their daring, a tone set not by the earthly\n#############\nOutput:\n("entity"<|>"Washington"<|>"location"<|>"Washington is a location where communications are being received, indicating its importance in the decision-making process.")##\n("entity"<|>"Operation: Dulce"<|>"mission"<|>"Operation: Dulce is described as a mission that has evolved to interact and prepare, indicating a significant shift in objectives and activities.")##\n("entity"<|>"The team"<|>"organization"<|>"The team is portrayed as a group of individuals who have transitioned from passive observers to active participants in a mission, showing a dynamic change in their role.")##\n("relationship"<|>"The team"<|>"Washington"<|>"The team receives communications from Washington, which influences their decision-making process."<|>7)##\n("relationship"<|>"The team"<|>"Operation: Dulce"<|>"The team is directly involved in Operation: Dulce, executing its evolved objectives and activities."<|>9)<|COMPLETE|>\n#############################\nExample 3:\n\nEntity_types: [person, role, technology, organization, event, location, concept]\nText:\ntheir voice slicing through the buzz of activity. "Control may be an illusion when facing an intelligence that literally writes its own rules," they stated stoically, casting a watchful eye over the flurry of data.\n\n"It\'s like it\'s learning to communicate," offered Sam Rivera from a nearby interface, their youthful energy boding a mix of awe and anxiety. "This gives talking to strangers\' a whole new meaning."\n\nAlex surveyed his team—each face a study in concentration, determination, and not a small measure of trepidation. "This might well be our first contact," he acknowledged, "And we need to be ready for whatever answers back."\n\nTogether, they stood on the edge of the unknown, forging humanity\'s response to a message from the heavens. The ensuing silence was palpable—a collective introspection about their role in this grand cosmic play, one that could rewrite human history.\n\nThe encrypted dialogue continued to unfold, its intricate patterns showing an almost uncanny anticipation\n#############\nOutput:\n("entity"<|>"Sam Rivera"<|>"person"<|>"Sam Rivera is a member of a team working on communicating with an unknown intelligence, showing a mix of awe and anxiety.")##\n("entity"<|>"Alex"<|>"person"<|>"Alex is the leader of a team attempting first contact with an unknown intelligence, acknowledging the significance of their task.")##\n("entity"<|>"Control"<|>"concept"<|>"Control refers to the ability to manage or govern, which is challenged by an intelligence that writes its own rules.")##\n("entity"<|>"Intelligence"<|>"concept"<|>"Intelligence here refers to an unknown entity capable of writing its own rules and learning to communicate.")##\n("entity"<|>"First Contact"<|>"event"<|>"First Contact is the potential initial communication between humanity and an unknown intelligence.")##\n("entity"<|>"Humanity\'s Response"<|>"event"<|>"Humanity\'s Response is the collective action taken by Alex\'s team in response to a message from an unknown intelligence.")##\n("relationship"<|>"Sam Rivera"<|>"Intelligence"<|>"Sam Rivera is directly involved in the process of learning to communicate with the unknown intelligence."<|>9)##\n("relationship"<|>"Alex"<|>"First Contact"<|>"Alex leads the team that might be making the First Contact with the unknown intelligence."<|>10)##\n("relationship"<|>"Alex"<|>"Humanity\'s Response"<|>"Alex and his team are the key figures in Humanity\'s Response to the unknown intelligence."<|>8)##\n("relationship"<|>"Control"<|>"Intelligence"<|>"The concept of Control is challenged by the Intelligence that writes its own rules."<|>7)<|COMPLETE|>\n#############################\n-Real Data-\n######################\nEntity_types: organization,person,geo,event\nText: 方加上几个特殊字符（UTF-8 BOM），结果会导致程序运行出现莫名其妙的错误。\n安装好文本编辑器后，输入以下代码：\n注意print前面不要有任何空格。然后，选择一个目录，例如C:\\work，把文件保存为hello.py，就可以打开命令行窗口，把当前目录切换到hello.py所在目录，就可以运行这个程序了：\n也可以保存为别的名字，比如first.py，但是必须要以.py结尾，其他的都不行。此外，文件名只能是英文字母、数字和下划线的组合。\n如果当前目录下没有hello.py这个文件，运行python hello.py就会报错：\n报错的意思就是，无法打开hello.py这个文件，因为文件不存在。这个时候，就要检查一下当前目录下是否有这个文件了。如果hello.py存放在另外一个目录下，要首先用cd命令切换当前目录。\n有同学问，能不能像.exe文件那样直接运行.py文件呢？在Windows上是不\n######################\nOutput:'}
+12:41:02,932 root ERROR error extracting graph
+Traceback (most recent call last):
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\index\graph\extractors\graph\graph_extractor.py", line 118, in __call__
+    result = await self._process_document(text, prompt_variables)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\index\graph\extractors\graph\graph_extractor.py", line 146, in _process_document
+    response = await self._llm(
+               ^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\openai\json_parsing_llm.py", line 34, in __call__
+    result = await self._delegate(input, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\openai\openai_token_replacing_llm.py", line 37, in __call__
+    return await self._delegate(input, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\openai\openai_history_tracking_llm.py", line 33, in __call__
+    output = await self._delegate(input, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\caching_llm.py", line 104, in __call__
+    result = await self._delegate(input, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\rate_limiting_llm.py", line 177, in __call__
+    result, start = await execute_with_retry()
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\rate_limiting_llm.py", line 159, in execute_with_retry
+    async for attempt in retryer:
+  File "C:\Tool\Anaconda3\Lib\site-packages\tenacity\asyncio\__init__.py", line 166, in __anext__
+    do = await self.iter(retry_state=self._retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\tenacity\asyncio\__init__.py", line 153, in iter
+    result = await action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\tenacity\_utils.py", line 99, in inner
+    return call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\tenacity\__init__.py", line 398, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+                                     ^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\concurrent\futures\_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\rate_limiting_llm.py", line 165, in execute_with_retry
+    return await do_attempt(), start
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\rate_limiting_llm.py", line 147, in do_attempt
+    return await self._delegate(input, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\base_llm.py", line 49, in __call__
+    return await self._invoke(input, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\base_llm.py", line 53, in _invoke
+    output = await self._execute_llm(input, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\openai\openai_chat_llm.py", line 55, in _execute_llm
+    completion = await self.client.chat.completions.create(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\openai\resources\chat\completions\completions.py", line 1927, in create
+    return await self._post(
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\openai\_base_client.py", line 1856, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\openai\_base_client.py", line 1550, in request
+    return await self._request(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\openai\_base_client.py", line 1651, in _request
+    raise self._make_status_error_from_response(err.response) from None
+openai.NotFoundError: 404 page not found
+12:41:02,932 graphrag.index.reporting.file_workflow_callbacks INFO Entity Extraction Error details={'doc_index': 0, 'text': '方加上几个特殊字符（UTF-8 BOM），结果会导致程序运行出现莫名其妙的错误。\n安装好文本编辑器后，输入以下代码：\n注意print前面不要有任何空格。然后，选择一个目录，例如C:\\work，把文件保存为hello.py，就可以打开命令行窗口，把当前目录切换到hello.py所在目录，就可以运行这个程序了：\n也可以保存为别的名字，比如first.py，但是必须要以.py结尾，其他的都不行。此外，文件名只能是英文字母、数字和下划线的组合。\n如果当前目录下没有hello.py这个文件，运行python hello.py就会报错：\n报错的意思就是，无法打开hello.py这个文件，因为文件不存在。这个时候，就要检查一下当前目录下是否有这个文件了。如果hello.py存放在另外一个目录下，要首先用cd命令切换当前目录。\n有同学问，能不能像.exe文件那样直接运行.py文件呢？在Windows上是不'}
+12:41:02,932 graphrag.index.reporting.file_workflow_callbacks INFO Error Invoking LLM details={'input': '\n-Goal-\nGiven a text document that is potentially relevant to this activity and a list of entity types, identify all entities of those types from the text and all relationships among the identified entities.\n\n-Steps-\n1. Identify all entities. For each identified entity, extract the following information:\n- entity_name: Name of the entity, capitalized\n- entity_type: One of the following types: [organization,person,geo,event]\n- entity_description: Comprehensive description of the entity\'s attributes and activities\nFormat each entity as ("entity"<|><entity_name><|><entity_type><|><entity_description>\n\n2. From the entities identified in step 1, identify all pairs of (source_entity, target_entity) that are *clearly related* to each other.\nFor each pair of related entities, extract the following information:\n- source_entity: name of the source entity, as identified in step 1\n- target_entity: name of the target entity, as identified in step 1\n- relationship_description: explanation as to why you think the source entity and the target entity are related to each other\n- relationship_strength: a numeric score indicating strength of the relationship between the source entity and target entity\n Format each relationship as ("relationship"<|><source_entity><|><target_entity><|><relationship_description><|><relationship_strength>)\n\n3. Return output in English as a single list of all the entities and relationships identified in steps 1 and 2. Use **##** as the list delimiter.\n\n4. When finished, output <|COMPLETE|>\n\n######################\n-Examples-\n######################\nExample 1:\n\nEntity_types: [person, technology, mission, organization, location]\nText:\nwhile Alex clenched his jaw, the buzz of frustration dull against the backdrop of Taylor\'s authoritarian certainty. It was this competitive undercurrent that kept him alert, the sense that his and Jordan\'s shared commitment to discovery was an unspoken rebellion against Cruz\'s narrowing vision of control and order.\n\nThen Taylor did something unexpected. They paused beside Jordan and, for a moment, observed the device with something akin to reverence. “If this tech can be understood..." Taylor said, their voice quieter, "It could change the game for us. For all of us.”\n\nThe underlying dismissal earlier seemed to falter, replaced by a glimpse of reluctant respect for the gravity of what lay in their hands. Jordan looked up, and for a fleeting heartbeat, their eyes locked with Taylor\'s, a wordless clash of wills softening into an uneasy truce.\n\nIt was a small transformation, barely perceptible, but one that Alex noted with an inward nod. They had all been brought here by different paths\n################\nOutput:\n("entity"<|>"Alex"<|>"person"<|>"Alex is a character who experiences frustration and is observant of the dynamics among other characters.")##\n("entity"<|>"Taylor"<|>"person"<|>"Taylor is portrayed with authoritarian certainty and shows a moment of reverence towards a device, indicating a change in perspective.")##\n("entity"<|>"Jordan"<|>"person"<|>"Jordan shares a commitment to discovery and has a significant interaction with Taylor regarding a device.")##\n("entity"<|>"Cruz"<|>"person"<|>"Cruz is associated with a vision of control and order, influencing the dynamics among other characters.")##\n("entity"<|>"The Device"<|>"technology"<|>"The Device is central to the story, with potential game-changing implications, and is revered by Taylor.")##\n("relationship"<|>"Alex"<|>"Taylor"<|>"Alex is affected by Taylor\'s authoritarian certainty and observes changes in Taylor\'s attitude towards the device."<|>7)##\n("relationship"<|>"Alex"<|>"Jordan"<|>"Alex and Jordan share a commitment to discovery, which contrasts with Cruz\'s vision."<|>6)##\n("relationship"<|>"Taylor"<|>"Jordan"<|>"Taylor and Jordan interact directly regarding the device, leading to a moment of mutual respect and an uneasy truce."<|>8)##\n("relationship"<|>"Jordan"<|>"Cruz"<|>"Jordan\'s commitment to discovery is in rebellion against Cruz\'s vision of control and order."<|>5)##\n("relationship"<|>"Taylor"<|>"The Device"<|>"Taylor shows reverence towards the device, indicating its importance and potential impact."<|>9)<|COMPLETE|>\n#############################\nExample 2:\n\nEntity_types: [person, technology, mission, organization, location]\nText:\nThey were no longer mere operatives; they had become guardians of a threshold, keepers of a message from a realm beyond stars and stripes. This elevation in their mission could not be shackled by regulations and established protocols—it demanded a new perspective, a new resolve.\n\nTension threaded through the dialogue of beeps and static as communications with Washington buzzed in the background. The team stood, a portentous air enveloping them. It was clear that the decisions they made in the ensuing hours could redefine humanity\'s place in the cosmos or condemn them to ignorance and potential peril.\n\nTheir connection to the stars solidified, the group moved to address the crystallizing warning, shifting from passive recipients to active participants. Mercer\'s latter instincts gained precedence— the team\'s mandate had evolved, no longer solely to observe and report but to interact and prepare. A metamorphosis had begun, and Operation: Dulce hummed with the newfound frequency of their daring, a tone set not by the earthly\n#############\nOutput:\n("entity"<|>"Washington"<|>"location"<|>"Washington is a location where communications are being received, indicating its importance in the decision-making process.")##\n("entity"<|>"Operation: Dulce"<|>"mission"<|>"Operation: Dulce is described as a mission that has evolved to interact and prepare, indicating a significant shift in objectives and activities.")##\n("entity"<|>"The team"<|>"organization"<|>"The team is portrayed as a group of individuals who have transitioned from passive observers to active participants in a mission, showing a dynamic change in their role.")##\n("relationship"<|>"The team"<|>"Washington"<|>"The team receives communications from Washington, which influences their decision-making process."<|>7)##\n("relationship"<|>"The team"<|>"Operation: Dulce"<|>"The team is directly involved in Operation: Dulce, executing its evolved objectives and activities."<|>9)<|COMPLETE|>\n#############################\nExample 3:\n\nEntity_types: [person, role, technology, organization, event, location, concept]\nText:\ntheir voice slicing through the buzz of activity. "Control may be an illusion when facing an intelligence that literally writes its own rules," they stated stoically, casting a watchful eye over the flurry of data.\n\n"It\'s like it\'s learning to communicate," offered Sam Rivera from a nearby interface, their youthful energy boding a mix of awe and anxiety. "This gives talking to strangers\' a whole new meaning."\n\nAlex surveyed his team—each face a study in concentration, determination, and not a small measure of trepidation. "This might well be our first contact," he acknowledged, "And we need to be ready for whatever answers back."\n\nTogether, they stood on the edge of the unknown, forging humanity\'s response to a message from the heavens. The ensuing silence was palpable—a collective introspection about their role in this grand cosmic play, one that could rewrite human history.\n\nThe encrypted dialogue continued to unfold, its intricate patterns showing an almost uncanny anticipation\n#############\nOutput:\n("entity"<|>"Sam Rivera"<|>"person"<|>"Sam Rivera is a member of a team working on communicating with an unknown intelligence, showing a mix of awe and anxiety.")##\n("entity"<|>"Alex"<|>"person"<|>"Alex is the leader of a team attempting first contact with an unknown intelligence, acknowledging the significance of their task.")##\n("entity"<|>"Control"<|>"concept"<|>"Control refers to the ability to manage or govern, which is challenged by an intelligence that writes its own rules.")##\n("entity"<|>"Intelligence"<|>"concept"<|>"Intelligence here refers to an unknown entity capable of writing its own rules and learning to communicate.")##\n("entity"<|>"First Contact"<|>"event"<|>"First Contact is the potential initial communication between humanity and an unknown intelligence.")##\n("entity"<|>"Humanity\'s Response"<|>"event"<|>"Humanity\'s Response is the collective action taken by Alex\'s team in response to a message from an unknown intelligence.")##\n("relationship"<|>"Sam Rivera"<|>"Intelligence"<|>"Sam Rivera is directly involved in the process of learning to communicate with the unknown intelligence."<|>9)##\n("relationship"<|>"Alex"<|>"First Contact"<|>"Alex leads the team that might be making the First Contact with the unknown intelligence."<|>10)##\n("relationship"<|>"Alex"<|>"Humanity\'s Response"<|>"Alex and his team are the key figures in Humanity\'s Response to the unknown intelligence."<|>8)##\n("relationship"<|>"Control"<|>"Intelligence"<|>"The concept of Control is challenged by the Intelligence that writes its own rules."<|>7)<|COMPLETE|>\n#############################\n-Real Data-\n######################\nEntity_types: organization,person,geo,event\nText: 绑定到变量：\n在上面这个示例中，第一个case x if x < 10表示当age < 10成立时匹配，且赋值给变量x，第二个case 10仅匹配单个值，第三个case 11|12|...|18能匹配多个值，用|分隔。\n可见，match语句的case匹配非常灵活。\nmatch语句还可以匹配列表，功能非常强大。\n我们假设用户输入了一个命令，用args = [\'gcc\', \'hello.c\']存储，下面的代码演示了如何用match匹配来解析这个列表：\n第一个case [\'gcc\']表示列表仅有\'gcc\'一个字符串，没有指定文件名，报错；\n第二个case [\'gcc\', file1, *files]表示列表第一个字符串是\'gcc\'，第二个字符串绑定到变量file1，后面的任意个字符串绑定到*files（符号*的作用将在函数的参数中讲解），它实际上表示至少指定一个文件；\n第三个case [\'clean\']表示列表仅有\'clean\'一个字符串；\n最后一个\n######################\nOutput:'}
+12:41:02,932 root ERROR error extracting graph
+Traceback (most recent call last):
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\index\graph\extractors\graph\graph_extractor.py", line 118, in __call__
+    result = await self._process_document(text, prompt_variables)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\index\graph\extractors\graph\graph_extractor.py", line 146, in _process_document
+    response = await self._llm(
+               ^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\openai\json_parsing_llm.py", line 34, in __call__
+    result = await self._delegate(input, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\openai\openai_token_replacing_llm.py", line 37, in __call__
+    return await self._delegate(input, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\openai\openai_history_tracking_llm.py", line 33, in __call__
+    output = await self._delegate(input, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\caching_llm.py", line 104, in __call__
+    result = await self._delegate(input, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\rate_limiting_llm.py", line 177, in __call__
+    result, start = await execute_with_retry()
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\rate_limiting_llm.py", line 159, in execute_with_retry
+    async for attempt in retryer:
+  File "C:\Tool\Anaconda3\Lib\site-packages\tenacity\asyncio\__init__.py", line 166, in __anext__
+    do = await self.iter(retry_state=self._retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\tenacity\asyncio\__init__.py", line 153, in iter
+    result = await action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\tenacity\_utils.py", line 99, in inner
+    return call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\tenacity\__init__.py", line 398, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+                                     ^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\concurrent\futures\_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\rate_limiting_llm.py", line 165, in execute_with_retry
+    return await do_attempt(), start
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\rate_limiting_llm.py", line 147, in do_attempt
+    return await self._delegate(input, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\base_llm.py", line 49, in __call__
+    return await self._invoke(input, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\base_llm.py", line 53, in _invoke
+    output = await self._execute_llm(input, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\openai\openai_chat_llm.py", line 55, in _execute_llm
+    completion = await self.client.chat.completions.create(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\openai\resources\chat\completions\completions.py", line 1927, in create
+    return await self._post(
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\openai\_base_client.py", line 1856, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\openai\_base_client.py", line 1550, in request
+    return await self._request(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\openai\_base_client.py", line 1651, in _request
+    raise self._make_status_error_from_response(err.response) from None
+openai.NotFoundError: 404 page not found
+12:41:02,932 graphrag.index.reporting.file_workflow_callbacks INFO Entity Extraction Error details={'doc_index': 0, 'text': "绑定到变量：\n在上面这个示例中，第一个case x if x < 10表示当age < 10成立时匹配，且赋值给变量x，第二个case 10仅匹配单个值，第三个case 11|12|...|18能匹配多个值，用|分隔。\n可见，match语句的case匹配非常灵活。\nmatch语句还可以匹配列表，功能非常强大。\n我们假设用户输入了一个命令，用args = ['gcc', 'hello.c']存储，下面的代码演示了如何用match匹配来解析这个列表：\n第一个case ['gcc']表示列表仅有'gcc'一个字符串，没有指定文件名，报错；\n第二个case ['gcc', file1, *files]表示列表第一个字符串是'gcc'，第二个字符串绑定到变量file1，后面的任意个字符串绑定到*files（符号*的作用将在函数的参数中讲解），它实际上表示至少指定一个文件；\n第三个case ['clean']表示列表仅有'clean'一个字符串；\n最后一个"}
+12:41:02,932 graphrag.index.reporting.file_workflow_callbacks INFO Error Invoking LLM details={'input': '\n-Goal-\nGiven a text document that is potentially relevant to this activity and a list of entity types, identify all entities of those types from the text and all relationships among the identified entities.\n\n-Steps-\n1. Identify all entities. For each identified entity, extract the following information:\n- entity_name: Name of the entity, capitalized\n- entity_type: One of the following types: [organization,person,geo,event]\n- entity_description: Comprehensive description of the entity\'s attributes and activities\nFormat each entity as ("entity"<|><entity_name><|><entity_type><|><entity_description>\n\n2. From the entities identified in step 1, identify all pairs of (source_entity, target_entity) that are *clearly related* to each other.\nFor each pair of related entities, extract the following information:\n- source_entity: name of the source entity, as identified in step 1\n- target_entity: name of the target entity, as identified in step 1\n- relationship_description: explanation as to why you think the source entity and the target entity are related to each other\n- relationship_strength: a numeric score indicating strength of the relationship between the source entity and target entity\n Format each relationship as ("relationship"<|><source_entity><|><target_entity><|><relationship_description><|><relationship_strength>)\n\n3. Return output in English as a single list of all the entities and relationships identified in steps 1 and 2. Use **##** as the list delimiter.\n\n4. When finished, output <|COMPLETE|>\n\n######################\n-Examples-\n######################\nExample 1:\n\nEntity_types: [person, technology, mission, organization, location]\nText:\nwhile Alex clenched his jaw, the buzz of frustration dull against the backdrop of Taylor\'s authoritarian certainty. It was this competitive undercurrent that kept him alert, the sense that his and Jordan\'s shared commitment to discovery was an unspoken rebellion against Cruz\'s narrowing vision of control and order.\n\nThen Taylor did something unexpected. They paused beside Jordan and, for a moment, observed the device with something akin to reverence. “If this tech can be understood..." Taylor said, their voice quieter, "It could change the game for us. For all of us.”\n\nThe underlying dismissal earlier seemed to falter, replaced by a glimpse of reluctant respect for the gravity of what lay in their hands. Jordan looked up, and for a fleeting heartbeat, their eyes locked with Taylor\'s, a wordless clash of wills softening into an uneasy truce.\n\nIt was a small transformation, barely perceptible, but one that Alex noted with an inward nod. They had all been brought here by different paths\n################\nOutput:\n("entity"<|>"Alex"<|>"person"<|>"Alex is a character who experiences frustration and is observant of the dynamics among other characters.")##\n("entity"<|>"Taylor"<|>"person"<|>"Taylor is portrayed with authoritarian certainty and shows a moment of reverence towards a device, indicating a change in perspective.")##\n("entity"<|>"Jordan"<|>"person"<|>"Jordan shares a commitment to discovery and has a significant interaction with Taylor regarding a device.")##\n("entity"<|>"Cruz"<|>"person"<|>"Cruz is associated with a vision of control and order, influencing the dynamics among other characters.")##\n("entity"<|>"The Device"<|>"technology"<|>"The Device is central to the story, with potential game-changing implications, and is revered by Taylor.")##\n("relationship"<|>"Alex"<|>"Taylor"<|>"Alex is affected by Taylor\'s authoritarian certainty and observes changes in Taylor\'s attitude towards the device."<|>7)##\n("relationship"<|>"Alex"<|>"Jordan"<|>"Alex and Jordan share a commitment to discovery, which contrasts with Cruz\'s vision."<|>6)##\n("relationship"<|>"Taylor"<|>"Jordan"<|>"Taylor and Jordan interact directly regarding the device, leading to a moment of mutual respect and an uneasy truce."<|>8)##\n("relationship"<|>"Jordan"<|>"Cruz"<|>"Jordan\'s commitment to discovery is in rebellion against Cruz\'s vision of control and order."<|>5)##\n("relationship"<|>"Taylor"<|>"The Device"<|>"Taylor shows reverence towards the device, indicating its importance and potential impact."<|>9)<|COMPLETE|>\n#############################\nExample 2:\n\nEntity_types: [person, technology, mission, organization, location]\nText:\nThey were no longer mere operatives; they had become guardians of a threshold, keepers of a message from a realm beyond stars and stripes. This elevation in their mission could not be shackled by regulations and established protocols—it demanded a new perspective, a new resolve.\n\nTension threaded through the dialogue of beeps and static as communications with Washington buzzed in the background. The team stood, a portentous air enveloping them. It was clear that the decisions they made in the ensuing hours could redefine humanity\'s place in the cosmos or condemn them to ignorance and potential peril.\n\nTheir connection to the stars solidified, the group moved to address the crystallizing warning, shifting from passive recipients to active participants. Mercer\'s latter instincts gained precedence— the team\'s mandate had evolved, no longer solely to observe and report but to interact and prepare. A metamorphosis had begun, and Operation: Dulce hummed with the newfound frequency of their daring, a tone set not by the earthly\n#############\nOutput:\n("entity"<|>"Washington"<|>"location"<|>"Washington is a location where communications are being received, indicating its importance in the decision-making process.")##\n("entity"<|>"Operation: Dulce"<|>"mission"<|>"Operation: Dulce is described as a mission that has evolved to interact and prepare, indicating a significant shift in objectives and activities.")##\n("entity"<|>"The team"<|>"organization"<|>"The team is portrayed as a group of individuals who have transitioned from passive observers to active participants in a mission, showing a dynamic change in their role.")##\n("relationship"<|>"The team"<|>"Washington"<|>"The team receives communications from Washington, which influences their decision-making process."<|>7)##\n("relationship"<|>"The team"<|>"Operation: Dulce"<|>"The team is directly involved in Operation: Dulce, executing its evolved objectives and activities."<|>9)<|COMPLETE|>\n#############################\nExample 3:\n\nEntity_types: [person, role, technology, organization, event, location, concept]\nText:\ntheir voice slicing through the buzz of activity. "Control may be an illusion when facing an intelligence that literally writes its own rules," they stated stoically, casting a watchful eye over the flurry of data.\n\n"It\'s like it\'s learning to communicate," offered Sam Rivera from a nearby interface, their youthful energy boding a mix of awe and anxiety. "This gives talking to strangers\' a whole new meaning."\n\nAlex surveyed his team—each face a study in concentration, determination, and not a small measure of trepidation. "This might well be our first contact," he acknowledged, "And we need to be ready for whatever answers back."\n\nTogether, they stood on the edge of the unknown, forging humanity\'s response to a message from the heavens. The ensuing silence was palpable—a collective introspection about their role in this grand cosmic play, one that could rewrite human history.\n\nThe encrypted dialogue continued to unfold, its intricate patterns showing an almost uncanny anticipation\n#############\nOutput:\n("entity"<|>"Sam Rivera"<|>"person"<|>"Sam Rivera is a member of a team working on communicating with an unknown intelligence, showing a mix of awe and anxiety.")##\n("entity"<|>"Alex"<|>"person"<|>"Alex is the leader of a team attempting first contact with an unknown intelligence, acknowledging the significance of their task.")##\n("entity"<|>"Control"<|>"concept"<|>"Control refers to the ability to manage or govern, which is challenged by an intelligence that writes its own rules.")##\n("entity"<|>"Intelligence"<|>"concept"<|>"Intelligence here refers to an unknown entity capable of writing its own rules and learning to communicate.")##\n("entity"<|>"First Contact"<|>"event"<|>"First Contact is the potential initial communication between humanity and an unknown intelligence.")##\n("entity"<|>"Humanity\'s Response"<|>"event"<|>"Humanity\'s Response is the collective action taken by Alex\'s team in response to a message from an unknown intelligence.")##\n("relationship"<|>"Sam Rivera"<|>"Intelligence"<|>"Sam Rivera is directly involved in the process of learning to communicate with the unknown intelligence."<|>9)##\n("relationship"<|>"Alex"<|>"First Contact"<|>"Alex leads the team that might be making the First Contact with the unknown intelligence."<|>10)##\n("relationship"<|>"Alex"<|>"Humanity\'s Response"<|>"Alex and his team are the key figures in Humanity\'s Response to the unknown intelligence."<|>8)##\n("relationship"<|>"Control"<|>"Intelligence"<|>"The concept of Control is challenged by the Intelligence that writes its own rules."<|>7)<|COMPLETE|>\n#############################\n-Real Data-\n######################\nEntity_types: organization,person,geo,event\nText: 的意思就是，无法打开hello.py这个文件，因为文件不存在。这个时候，就要检查一下当前目录下是否有这个文件了。如果hello.py存放在另外一个目录下，要首先用cd命令切换当前目录。\n有同学问，能不能像.exe文件那样直接运行.py文件呢？在Windows上是不行的，但是，在Mac和Linux上是可以的，方法是在.py文件的第一行加上一个特殊的注释：\n然后，通过命令给hello.py以执行权限：\n就可以直接运行hello.py了，比如在Mac下运行：\nhello.py\n用文本编辑器写Python程序，然后保存为后缀为.py的文件，就可以用Python直接运行这个程序了。\n######################\nOutput:'}
+12:41:02,932 root ERROR error extracting graph
+Traceback (most recent call last):
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\index\graph\extractors\graph\graph_extractor.py", line 118, in __call__
+    result = await self._process_document(text, prompt_variables)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\index\graph\extractors\graph\graph_extractor.py", line 146, in _process_document
+    response = await self._llm(
+               ^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\openai\json_parsing_llm.py", line 34, in __call__
+    result = await self._delegate(input, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\openai\openai_token_replacing_llm.py", line 37, in __call__
+    return await self._delegate(input, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\openai\openai_history_tracking_llm.py", line 33, in __call__
+    output = await self._delegate(input, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\caching_llm.py", line 104, in __call__
+    result = await self._delegate(input, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\rate_limiting_llm.py", line 177, in __call__
+    result, start = await execute_with_retry()
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\rate_limiting_llm.py", line 159, in execute_with_retry
+    async for attempt in retryer:
+  File "C:\Tool\Anaconda3\Lib\site-packages\tenacity\asyncio\__init__.py", line 166, in __anext__
+    do = await self.iter(retry_state=self._retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\tenacity\asyncio\__init__.py", line 153, in iter
+    result = await action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\tenacity\_utils.py", line 99, in inner
+    return call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\tenacity\__init__.py", line 398, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+                                     ^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\concurrent\futures\_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\rate_limiting_llm.py", line 165, in execute_with_retry
+    return await do_attempt(), start
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\rate_limiting_llm.py", line 147, in do_attempt
+    return await self._delegate(input, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\base_llm.py", line 49, in __call__
+    return await self._invoke(input, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\base_llm.py", line 53, in _invoke
+    output = await self._execute_llm(input, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\openai\openai_chat_llm.py", line 55, in _execute_llm
+    completion = await self.client.chat.completions.create(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\openai\resources\chat\completions\completions.py", line 1927, in create
+    return await self._post(
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\openai\_base_client.py", line 1856, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\openai\_base_client.py", line 1550, in request
+    return await self._request(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\openai\_base_client.py", line 1651, in _request
+    raise self._make_status_error_from_response(err.response) from None
+openai.NotFoundError: 404 page not found
+12:41:02,948 graphrag.index.reporting.file_workflow_callbacks INFO Entity Extraction Error details={'doc_index': 0, 'text': '的意思就是，无法打开hello.py这个文件，因为文件不存在。这个时候，就要检查一下当前目录下是否有这个文件了。如果hello.py存放在另外一个目录下，要首先用cd命令切换当前目录。\n有同学问，能不能像.exe文件那样直接运行.py文件呢？在Windows上是不行的，但是，在Mac和Linux上是可以的，方法是在.py文件的第一行加上一个特殊的注释：\n然后，通过命令给hello.py以执行权限：\n就可以直接运行hello.py了，比如在Mac下运行：\nhello.py\n用文本编辑器写Python程序，然后保存为后缀为.py的文件，就可以用Python直接运行这个程序了。'}
+12:41:02,948 graphrag.index.reporting.file_workflow_callbacks INFO Error Invoking LLM details={'input': '\n-Goal-\nGiven a text document that is potentially relevant to this activity and a list of entity types, identify all entities of those types from the text and all relationships among the identified entities.\n\n-Steps-\n1. Identify all entities. For each identified entity, extract the following information:\n- entity_name: Name of the entity, capitalized\n- entity_type: One of the following types: [organization,person,geo,event]\n- entity_description: Comprehensive description of the entity\'s attributes and activities\nFormat each entity as ("entity"<|><entity_name><|><entity_type><|><entity_description>\n\n2. From the entities identified in step 1, identify all pairs of (source_entity, target_entity) that are *clearly related* to each other.\nFor each pair of related entities, extract the following information:\n- source_entity: name of the source entity, as identified in step 1\n- target_entity: name of the target entity, as identified in step 1\n- relationship_description: explanation as to why you think the source entity and the target entity are related to each other\n- relationship_strength: a numeric score indicating strength of the relationship between the source entity and target entity\n Format each relationship as ("relationship"<|><source_entity><|><target_entity><|><relationship_description><|><relationship_strength>)\n\n3. Return output in English as a single list of all the entities and relationships identified in steps 1 and 2. Use **##** as the list delimiter.\n\n4. When finished, output <|COMPLETE|>\n\n######################\n-Examples-\n######################\nExample 1:\n\nEntity_types: [person, technology, mission, organization, location]\nText:\nwhile Alex clenched his jaw, the buzz of frustration dull against the backdrop of Taylor\'s authoritarian certainty. It was this competitive undercurrent that kept him alert, the sense that his and Jordan\'s shared commitment to discovery was an unspoken rebellion against Cruz\'s narrowing vision of control and order.\n\nThen Taylor did something unexpected. They paused beside Jordan and, for a moment, observed the device with something akin to reverence. “If this tech can be understood..." Taylor said, their voice quieter, "It could change the game for us. For all of us.”\n\nThe underlying dismissal earlier seemed to falter, replaced by a glimpse of reluctant respect for the gravity of what lay in their hands. Jordan looked up, and for a fleeting heartbeat, their eyes locked with Taylor\'s, a wordless clash of wills softening into an uneasy truce.\n\nIt was a small transformation, barely perceptible, but one that Alex noted with an inward nod. They had all been brought here by different paths\n################\nOutput:\n("entity"<|>"Alex"<|>"person"<|>"Alex is a character who experiences frustration and is observant of the dynamics among other characters.")##\n("entity"<|>"Taylor"<|>"person"<|>"Taylor is portrayed with authoritarian certainty and shows a moment of reverence towards a device, indicating a change in perspective.")##\n("entity"<|>"Jordan"<|>"person"<|>"Jordan shares a commitment to discovery and has a significant interaction with Taylor regarding a device.")##\n("entity"<|>"Cruz"<|>"person"<|>"Cruz is associated with a vision of control and order, influencing the dynamics among other characters.")##\n("entity"<|>"The Device"<|>"technology"<|>"The Device is central to the story, with potential game-changing implications, and is revered by Taylor.")##\n("relationship"<|>"Alex"<|>"Taylor"<|>"Alex is affected by Taylor\'s authoritarian certainty and observes changes in Taylor\'s attitude towards the device."<|>7)##\n("relationship"<|>"Alex"<|>"Jordan"<|>"Alex and Jordan share a commitment to discovery, which contrasts with Cruz\'s vision."<|>6)##\n("relationship"<|>"Taylor"<|>"Jordan"<|>"Taylor and Jordan interact directly regarding the device, leading to a moment of mutual respect and an uneasy truce."<|>8)##\n("relationship"<|>"Jordan"<|>"Cruz"<|>"Jordan\'s commitment to discovery is in rebellion against Cruz\'s vision of control and order."<|>5)##\n("relationship"<|>"Taylor"<|>"The Device"<|>"Taylor shows reverence towards the device, indicating its importance and potential impact."<|>9)<|COMPLETE|>\n#############################\nExample 2:\n\nEntity_types: [person, technology, mission, organization, location]\nText:\nThey were no longer mere operatives; they had become guardians of a threshold, keepers of a message from a realm beyond stars and stripes. This elevation in their mission could not be shackled by regulations and established protocols—it demanded a new perspective, a new resolve.\n\nTension threaded through the dialogue of beeps and static as communications with Washington buzzed in the background. The team stood, a portentous air enveloping them. It was clear that the decisions they made in the ensuing hours could redefine humanity\'s place in the cosmos or condemn them to ignorance and potential peril.\n\nTheir connection to the stars solidified, the group moved to address the crystallizing warning, shifting from passive recipients to active participants. Mercer\'s latter instincts gained precedence— the team\'s mandate had evolved, no longer solely to observe and report but to interact and prepare. A metamorphosis had begun, and Operation: Dulce hummed with the newfound frequency of their daring, a tone set not by the earthly\n#############\nOutput:\n("entity"<|>"Washington"<|>"location"<|>"Washington is a location where communications are being received, indicating its importance in the decision-making process.")##\n("entity"<|>"Operation: Dulce"<|>"mission"<|>"Operation: Dulce is described as a mission that has evolved to interact and prepare, indicating a significant shift in objectives and activities.")##\n("entity"<|>"The team"<|>"organization"<|>"The team is portrayed as a group of individuals who have transitioned from passive observers to active participants in a mission, showing a dynamic change in their role.")##\n("relationship"<|>"The team"<|>"Washington"<|>"The team receives communications from Washington, which influences their decision-making process."<|>7)##\n("relationship"<|>"The team"<|>"Operation: Dulce"<|>"The team is directly involved in Operation: Dulce, executing its evolved objectives and activities."<|>9)<|COMPLETE|>\n#############################\nExample 3:\n\nEntity_types: [person, role, technology, organization, event, location, concept]\nText:\ntheir voice slicing through the buzz of activity. "Control may be an illusion when facing an intelligence that literally writes its own rules," they stated stoically, casting a watchful eye over the flurry of data.\n\n"It\'s like it\'s learning to communicate," offered Sam Rivera from a nearby interface, their youthful energy boding a mix of awe and anxiety. "This gives talking to strangers\' a whole new meaning."\n\nAlex surveyed his team—each face a study in concentration, determination, and not a small measure of trepidation. "This might well be our first contact," he acknowledged, "And we need to be ready for whatever answers back."\n\nTogether, they stood on the edge of the unknown, forging humanity\'s response to a message from the heavens. The ensuing silence was palpable—a collective introspection about their role in this grand cosmic play, one that could rewrite human history.\n\nThe encrypted dialogue continued to unfold, its intricate patterns showing an almost uncanny anticipation\n#############\nOutput:\n("entity"<|>"Sam Rivera"<|>"person"<|>"Sam Rivera is a member of a team working on communicating with an unknown intelligence, showing a mix of awe and anxiety.")##\n("entity"<|>"Alex"<|>"person"<|>"Alex is the leader of a team attempting first contact with an unknown intelligence, acknowledging the significance of their task.")##\n("entity"<|>"Control"<|>"concept"<|>"Control refers to the ability to manage or govern, which is challenged by an intelligence that writes its own rules.")##\n("entity"<|>"Intelligence"<|>"concept"<|>"Intelligence here refers to an unknown entity capable of writing its own rules and learning to communicate.")##\n("entity"<|>"First Contact"<|>"event"<|>"First Contact is the potential initial communication between humanity and an unknown intelligence.")##\n("entity"<|>"Humanity\'s Response"<|>"event"<|>"Humanity\'s Response is the collective action taken by Alex\'s team in response to a message from an unknown intelligence.")##\n("relationship"<|>"Sam Rivera"<|>"Intelligence"<|>"Sam Rivera is directly involved in the process of learning to communicate with the unknown intelligence."<|>9)##\n("relationship"<|>"Alex"<|>"First Contact"<|>"Alex leads the team that might be making the First Contact with the unknown intelligence."<|>10)##\n("relationship"<|>"Alex"<|>"Humanity\'s Response"<|>"Alex and his team are the key figures in Humanity\'s Response to the unknown intelligence."<|>8)##\n("relationship"<|>"Control"<|>"Intelligence"<|>"The concept of Control is challenged by the Intelligence that writes its own rules."<|>7)<|COMPLETE|>\n#############################\n-Real Data-\n######################\nEntity_types: organization,person,geo,event\nText: 少的代码。\n缩进的坏处就是“复制－粘贴”功能失效了，这是最坑爹的地方。当你重构代码时，粘贴过去的代码必须重新检查缩进是否正确。此外，IDE很难像格式化Java代码那样格式化Python代码。\n最后，请务必注意，Python程序是大小写敏感的，如果写错了大小写，程序会报错。\nPython使用缩进来组织代码块，请务必遵守约定俗成的习惯，坚持使用4个空格的缩进；\n在文本编辑器中，需要设置把Tab自动转换为4个空格，确保不混用Tab和空格。\n当我们用if ... elif ... elif ... else ...判断时，会写很长一串代码，可读性较差。\n如果要针对某个变量匹配若干种情况，可以使用match语句。\n例如，某个学生的成绩只能是A、B、C，用if语句编写如下：\n如果用match语句改写，则改写如下：\n使用match语\ufffd\n######################\nOutput:'}
+12:41:02,948 root ERROR error extracting graph
+Traceback (most recent call last):
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\index\graph\extractors\graph\graph_extractor.py", line 118, in __call__
+    result = await self._process_document(text, prompt_variables)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\index\graph\extractors\graph\graph_extractor.py", line 146, in _process_document
+    response = await self._llm(
+               ^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\openai\json_parsing_llm.py", line 34, in __call__
+    result = await self._delegate(input, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\openai\openai_token_replacing_llm.py", line 37, in __call__
+    return await self._delegate(input, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\openai\openai_history_tracking_llm.py", line 33, in __call__
+    output = await self._delegate(input, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\caching_llm.py", line 104, in __call__
+    result = await self._delegate(input, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\rate_limiting_llm.py", line 177, in __call__
+    result, start = await execute_with_retry()
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\rate_limiting_llm.py", line 159, in execute_with_retry
+    async for attempt in retryer:
+  File "C:\Tool\Anaconda3\Lib\site-packages\tenacity\asyncio\__init__.py", line 166, in __anext__
+    do = await self.iter(retry_state=self._retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\tenacity\asyncio\__init__.py", line 153, in iter
+    result = await action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\tenacity\_utils.py", line 99, in inner
+    return call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\tenacity\__init__.py", line 398, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+                                     ^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\concurrent\futures\_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\rate_limiting_llm.py", line 165, in execute_with_retry
+    return await do_attempt(), start
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\rate_limiting_llm.py", line 147, in do_attempt
+    return await self._delegate(input, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\base_llm.py", line 49, in __call__
+    return await self._invoke(input, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\base_llm.py", line 53, in _invoke
+    output = await self._execute_llm(input, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\openai\openai_chat_llm.py", line 55, in _execute_llm
+    completion = await self.client.chat.completions.create(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\openai\resources\chat\completions\completions.py", line 1927, in create
+    return await self._post(
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\openai\_base_client.py", line 1856, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\openai\_base_client.py", line 1550, in request
+    return await self._request(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\openai\_base_client.py", line 1651, in _request
+    raise self._make_status_error_from_response(err.response) from None
+openai.NotFoundError: 404 page not found
+12:41:02,948 graphrag.index.reporting.file_workflow_callbacks INFO Entity Extraction Error details={'doc_index': 0, 'text': '少的代码。\n缩进的坏处就是“复制－粘贴”功能失效了，这是最坑爹的地方。当你重构代码时，粘贴过去的代码必须重新检查缩进是否正确。此外，IDE很难像格式化Java代码那样格式化Python代码。\n最后，请务必注意，Python程序是大小写敏感的，如果写错了大小写，程序会报错。\nPython使用缩进来组织代码块，请务必遵守约定俗成的习惯，坚持使用4个空格的缩进；\n在文本编辑器中，需要设置把Tab自动转换为4个空格，确保不混用Tab和空格。\n当我们用if ... elif ... elif ... else ...判断时，会写很长一串代码，可读性较差。\n如果要针对某个变量匹配若干种情况，可以使用match语句。\n例如，某个学生的成绩只能是A、B、C，用if语句编写如下：\n如果用match语句改写，则改写如下：\n使用match语\ufffd'}
+12:41:02,948 graphrag.index.reporting.file_workflow_callbacks INFO Error Invoking LLM details={'input': '\n-Goal-\nGiven a text document that is potentially relevant to this activity and a list of entity types, identify all entities of those types from the text and all relationships among the identified entities.\n\n-Steps-\n1. Identify all entities. For each identified entity, extract the following information:\n- entity_name: Name of the entity, capitalized\n- entity_type: One of the following types: [organization,person,geo,event]\n- entity_description: Comprehensive description of the entity\'s attributes and activities\nFormat each entity as ("entity"<|><entity_name><|><entity_type><|><entity_description>\n\n2. From the entities identified in step 1, identify all pairs of (source_entity, target_entity) that are *clearly related* to each other.\nFor each pair of related entities, extract the following information:\n- source_entity: name of the source entity, as identified in step 1\n- target_entity: name of the target entity, as identified in step 1\n- relationship_description: explanation as to why you think the source entity and the target entity are related to each other\n- relationship_strength: a numeric score indicating strength of the relationship between the source entity and target entity\n Format each relationship as ("relationship"<|><source_entity><|><target_entity><|><relationship_description><|><relationship_strength>)\n\n3. Return output in English as a single list of all the entities and relationships identified in steps 1 and 2. Use **##** as the list delimiter.\n\n4. When finished, output <|COMPLETE|>\n\n######################\n-Examples-\n######################\nExample 1:\n\nEntity_types: [person, technology, mission, organization, location]\nText:\nwhile Alex clenched his jaw, the buzz of frustration dull against the backdrop of Taylor\'s authoritarian certainty. It was this competitive undercurrent that kept him alert, the sense that his and Jordan\'s shared commitment to discovery was an unspoken rebellion against Cruz\'s narrowing vision of control and order.\n\nThen Taylor did something unexpected. They paused beside Jordan and, for a moment, observed the device with something akin to reverence. “If this tech can be understood..." Taylor said, their voice quieter, "It could change the game for us. For all of us.”\n\nThe underlying dismissal earlier seemed to falter, replaced by a glimpse of reluctant respect for the gravity of what lay in their hands. Jordan looked up, and for a fleeting heartbeat, their eyes locked with Taylor\'s, a wordless clash of wills softening into an uneasy truce.\n\nIt was a small transformation, barely perceptible, but one that Alex noted with an inward nod. They had all been brought here by different paths\n################\nOutput:\n("entity"<|>"Alex"<|>"person"<|>"Alex is a character who experiences frustration and is observant of the dynamics among other characters.")##\n("entity"<|>"Taylor"<|>"person"<|>"Taylor is portrayed with authoritarian certainty and shows a moment of reverence towards a device, indicating a change in perspective.")##\n("entity"<|>"Jordan"<|>"person"<|>"Jordan shares a commitment to discovery and has a significant interaction with Taylor regarding a device.")##\n("entity"<|>"Cruz"<|>"person"<|>"Cruz is associated with a vision of control and order, influencing the dynamics among other characters.")##\n("entity"<|>"The Device"<|>"technology"<|>"The Device is central to the story, with potential game-changing implications, and is revered by Taylor.")##\n("relationship"<|>"Alex"<|>"Taylor"<|>"Alex is affected by Taylor\'s authoritarian certainty and observes changes in Taylor\'s attitude towards the device."<|>7)##\n("relationship"<|>"Alex"<|>"Jordan"<|>"Alex and Jordan share a commitment to discovery, which contrasts with Cruz\'s vision."<|>6)##\n("relationship"<|>"Taylor"<|>"Jordan"<|>"Taylor and Jordan interact directly regarding the device, leading to a moment of mutual respect and an uneasy truce."<|>8)##\n("relationship"<|>"Jordan"<|>"Cruz"<|>"Jordan\'s commitment to discovery is in rebellion against Cruz\'s vision of control and order."<|>5)##\n("relationship"<|>"Taylor"<|>"The Device"<|>"Taylor shows reverence towards the device, indicating its importance and potential impact."<|>9)<|COMPLETE|>\n#############################\nExample 2:\n\nEntity_types: [person, technology, mission, organization, location]\nText:\nThey were no longer mere operatives; they had become guardians of a threshold, keepers of a message from a realm beyond stars and stripes. This elevation in their mission could not be shackled by regulations and established protocols—it demanded a new perspective, a new resolve.\n\nTension threaded through the dialogue of beeps and static as communications with Washington buzzed in the background. The team stood, a portentous air enveloping them. It was clear that the decisions they made in the ensuing hours could redefine humanity\'s place in the cosmos or condemn them to ignorance and potential peril.\n\nTheir connection to the stars solidified, the group moved to address the crystallizing warning, shifting from passive recipients to active participants. Mercer\'s latter instincts gained precedence— the team\'s mandate had evolved, no longer solely to observe and report but to interact and prepare. A metamorphosis had begun, and Operation: Dulce hummed with the newfound frequency of their daring, a tone set not by the earthly\n#############\nOutput:\n("entity"<|>"Washington"<|>"location"<|>"Washington is a location where communications are being received, indicating its importance in the decision-making process.")##\n("entity"<|>"Operation: Dulce"<|>"mission"<|>"Operation: Dulce is described as a mission that has evolved to interact and prepare, indicating a significant shift in objectives and activities.")##\n("entity"<|>"The team"<|>"organization"<|>"The team is portrayed as a group of individuals who have transitioned from passive observers to active participants in a mission, showing a dynamic change in their role.")##\n("relationship"<|>"The team"<|>"Washington"<|>"The team receives communications from Washington, which influences their decision-making process."<|>7)##\n("relationship"<|>"The team"<|>"Operation: Dulce"<|>"The team is directly involved in Operation: Dulce, executing its evolved objectives and activities."<|>9)<|COMPLETE|>\n#############################\nExample 3:\n\nEntity_types: [person, role, technology, organization, event, location, concept]\nText:\ntheir voice slicing through the buzz of activity. "Control may be an illusion when facing an intelligence that literally writes its own rules," they stated stoically, casting a watchful eye over the flurry of data.\n\n"It\'s like it\'s learning to communicate," offered Sam Rivera from a nearby interface, their youthful energy boding a mix of awe and anxiety. "This gives talking to strangers\' a whole new meaning."\n\nAlex surveyed his team—each face a study in concentration, determination, and not a small measure of trepidation. "This might well be our first contact," he acknowledged, "And we need to be ready for whatever answers back."\n\nTogether, they stood on the edge of the unknown, forging humanity\'s response to a message from the heavens. The ensuing silence was palpable—a collective introspection about their role in this grand cosmic play, one that could rewrite human history.\n\nThe encrypted dialogue continued to unfold, its intricate patterns showing an almost uncanny anticipation\n#############\nOutput:\n("entity"<|>"Sam Rivera"<|>"person"<|>"Sam Rivera is a member of a team working on communicating with an unknown intelligence, showing a mix of awe and anxiety.")##\n("entity"<|>"Alex"<|>"person"<|>"Alex is the leader of a team attempting first contact with an unknown intelligence, acknowledging the significance of their task.")##\n("entity"<|>"Control"<|>"concept"<|>"Control refers to the ability to manage or govern, which is challenged by an intelligence that writes its own rules.")##\n("entity"<|>"Intelligence"<|>"concept"<|>"Intelligence here refers to an unknown entity capable of writing its own rules and learning to communicate.")##\n("entity"<|>"First Contact"<|>"event"<|>"First Contact is the potential initial communication between humanity and an unknown intelligence.")##\n("entity"<|>"Humanity\'s Response"<|>"event"<|>"Humanity\'s Response is the collective action taken by Alex\'s team in response to a message from an unknown intelligence.")##\n("relationship"<|>"Sam Rivera"<|>"Intelligence"<|>"Sam Rivera is directly involved in the process of learning to communicate with the unknown intelligence."<|>9)##\n("relationship"<|>"Alex"<|>"First Contact"<|>"Alex leads the team that might be making the First Contact with the unknown intelligence."<|>10)##\n("relationship"<|>"Alex"<|>"Humanity\'s Response"<|>"Alex and his team are the key figures in Humanity\'s Response to the unknown intelligence."<|>8)##\n("relationship"<|>"Control"<|>"Intelligence"<|>"The concept of Control is challenged by the Intelligence that writes its own rules."<|>7)<|COMPLETE|>\n#############################\n-Real Data-\n######################\nEntity_types: organization,person,geo,event\nText: 注释，注释是给人看的，可以是任意内容，解释器会忽略掉注释。其他每一行都是一个语句，当语句以冒号:结尾时，缩进的语句视为代码块。\n缩进有利有弊。好处是强迫你写出格式化的代码，但没有规定缩进是几个空格还是Tab。按照约定俗成的惯例，应该始终坚持使用4个空格的缩进。\n缩进的另一个好处是强迫你写出缩进较少的代码，你会倾向于把一段很长的代码拆分成若干函数，从而得到缩进较少的代码。\n缩进的坏处就是“复制－粘贴”功能失效了，这是最坑爹的地方。当你重构代码时，粘贴过去的代码必须重新检查缩进是否正确。此外，IDE很难像格式化Java代码那样格式化Python代码。\n最后，请务必注意，Python程序是大小写敏\n######################\nOutput:'}
+12:41:02,948 root ERROR error extracting graph
+Traceback (most recent call last):
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\index\graph\extractors\graph\graph_extractor.py", line 118, in __call__
+    result = await self._process_document(text, prompt_variables)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\index\graph\extractors\graph\graph_extractor.py", line 146, in _process_document
+    response = await self._llm(
+               ^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\openai\json_parsing_llm.py", line 34, in __call__
+    result = await self._delegate(input, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\openai\openai_token_replacing_llm.py", line 37, in __call__
+    return await self._delegate(input, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\openai\openai_history_tracking_llm.py", line 33, in __call__
+    output = await self._delegate(input, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\caching_llm.py", line 104, in __call__
+    result = await self._delegate(input, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\rate_limiting_llm.py", line 177, in __call__
+    result, start = await execute_with_retry()
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\rate_limiting_llm.py", line 159, in execute_with_retry
+    async for attempt in retryer:
+  File "C:\Tool\Anaconda3\Lib\site-packages\tenacity\asyncio\__init__.py", line 166, in __anext__
+    do = await self.iter(retry_state=self._retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\tenacity\asyncio\__init__.py", line 153, in iter
+    result = await action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\tenacity\_utils.py", line 99, in inner
+    return call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\tenacity\__init__.py", line 398, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+                                     ^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\concurrent\futures\_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\rate_limiting_llm.py", line 165, in execute_with_retry
+    return await do_attempt(), start
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\rate_limiting_llm.py", line 147, in do_attempt
+    return await self._delegate(input, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\base_llm.py", line 49, in __call__
+    return await self._invoke(input, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\base_llm.py", line 53, in _invoke
+    output = await self._execute_llm(input, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\openai\openai_chat_llm.py", line 55, in _execute_llm
+    completion = await self.client.chat.completions.create(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\openai\resources\chat\completions\completions.py", line 1927, in create
+    return await self._post(
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\openai\_base_client.py", line 1856, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\openai\_base_client.py", line 1550, in request
+    return await self._request(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\openai\_base_client.py", line 1651, in _request
+    raise self._make_status_error_from_response(err.response) from None
+openai.NotFoundError: 404 page not found
+12:41:02,956 graphrag.index.reporting.file_workflow_callbacks INFO Entity Extraction Error details={'doc_index': 0, 'text': '注释，注释是给人看的，可以是任意内容，解释器会忽略掉注释。其他每一行都是一个语句，当语句以冒号:结尾时，缩进的语句视为代码块。\n缩进有利有弊。好处是强迫你写出格式化的代码，但没有规定缩进是几个空格还是Tab。按照约定俗成的惯例，应该始终坚持使用4个空格的缩进。\n缩进的另一个好处是强迫你写出缩进较少的代码，你会倾向于把一段很长的代码拆分成若干函数，从而得到缩进较少的代码。\n缩进的坏处就是“复制－粘贴”功能失效了，这是最坑爹的地方。当你重构代码时，粘贴过去的代码必须重新检查缩进是否正确。此外，IDE很难像格式化Java代码那样格式化Python代码。\n最后，请务必注意，Python程序是大小写敏'}
+12:41:02,956 graphrag.index.reporting.file_workflow_callbacks INFO Error Invoking LLM details={'input': '\n-Goal-\nGiven a text document that is potentially relevant to this activity and a list of entity types, identify all entities of those types from the text and all relationships among the identified entities.\n\n-Steps-\n1. Identify all entities. For each identified entity, extract the following information:\n- entity_name: Name of the entity, capitalized\n- entity_type: One of the following types: [organization,person,geo,event]\n- entity_description: Comprehensive description of the entity\'s attributes and activities\nFormat each entity as ("entity"<|><entity_name><|><entity_type><|><entity_description>\n\n2. From the entities identified in step 1, identify all pairs of (source_entity, target_entity) that are *clearly related* to each other.\nFor each pair of related entities, extract the following information:\n- source_entity: name of the source entity, as identified in step 1\n- target_entity: name of the target entity, as identified in step 1\n- relationship_description: explanation as to why you think the source entity and the target entity are related to each other\n- relationship_strength: a numeric score indicating strength of the relationship between the source entity and target entity\n Format each relationship as ("relationship"<|><source_entity><|><target_entity><|><relationship_description><|><relationship_strength>)\n\n3. Return output in English as a single list of all the entities and relationships identified in steps 1 and 2. Use **##** as the list delimiter.\n\n4. When finished, output <|COMPLETE|>\n\n######################\n-Examples-\n######################\nExample 1:\n\nEntity_types: [person, technology, mission, organization, location]\nText:\nwhile Alex clenched his jaw, the buzz of frustration dull against the backdrop of Taylor\'s authoritarian certainty. It was this competitive undercurrent that kept him alert, the sense that his and Jordan\'s shared commitment to discovery was an unspoken rebellion against Cruz\'s narrowing vision of control and order.\n\nThen Taylor did something unexpected. They paused beside Jordan and, for a moment, observed the device with something akin to reverence. “If this tech can be understood..." Taylor said, their voice quieter, "It could change the game for us. For all of us.”\n\nThe underlying dismissal earlier seemed to falter, replaced by a glimpse of reluctant respect for the gravity of what lay in their hands. Jordan looked up, and for a fleeting heartbeat, their eyes locked with Taylor\'s, a wordless clash of wills softening into an uneasy truce.\n\nIt was a small transformation, barely perceptible, but one that Alex noted with an inward nod. They had all been brought here by different paths\n################\nOutput:\n("entity"<|>"Alex"<|>"person"<|>"Alex is a character who experiences frustration and is observant of the dynamics among other characters.")##\n("entity"<|>"Taylor"<|>"person"<|>"Taylor is portrayed with authoritarian certainty and shows a moment of reverence towards a device, indicating a change in perspective.")##\n("entity"<|>"Jordan"<|>"person"<|>"Jordan shares a commitment to discovery and has a significant interaction with Taylor regarding a device.")##\n("entity"<|>"Cruz"<|>"person"<|>"Cruz is associated with a vision of control and order, influencing the dynamics among other characters.")##\n("entity"<|>"The Device"<|>"technology"<|>"The Device is central to the story, with potential game-changing implications, and is revered by Taylor.")##\n("relationship"<|>"Alex"<|>"Taylor"<|>"Alex is affected by Taylor\'s authoritarian certainty and observes changes in Taylor\'s attitude towards the device."<|>7)##\n("relationship"<|>"Alex"<|>"Jordan"<|>"Alex and Jordan share a commitment to discovery, which contrasts with Cruz\'s vision."<|>6)##\n("relationship"<|>"Taylor"<|>"Jordan"<|>"Taylor and Jordan interact directly regarding the device, leading to a moment of mutual respect and an uneasy truce."<|>8)##\n("relationship"<|>"Jordan"<|>"Cruz"<|>"Jordan\'s commitment to discovery is in rebellion against Cruz\'s vision of control and order."<|>5)##\n("relationship"<|>"Taylor"<|>"The Device"<|>"Taylor shows reverence towards the device, indicating its importance and potential impact."<|>9)<|COMPLETE|>\n#############################\nExample 2:\n\nEntity_types: [person, technology, mission, organization, location]\nText:\nThey were no longer mere operatives; they had become guardians of a threshold, keepers of a message from a realm beyond stars and stripes. This elevation in their mission could not be shackled by regulations and established protocols—it demanded a new perspective, a new resolve.\n\nTension threaded through the dialogue of beeps and static as communications with Washington buzzed in the background. The team stood, a portentous air enveloping them. It was clear that the decisions they made in the ensuing hours could redefine humanity\'s place in the cosmos or condemn them to ignorance and potential peril.\n\nTheir connection to the stars solidified, the group moved to address the crystallizing warning, shifting from passive recipients to active participants. Mercer\'s latter instincts gained precedence— the team\'s mandate had evolved, no longer solely to observe and report but to interact and prepare. A metamorphosis had begun, and Operation: Dulce hummed with the newfound frequency of their daring, a tone set not by the earthly\n#############\nOutput:\n("entity"<|>"Washington"<|>"location"<|>"Washington is a location where communications are being received, indicating its importance in the decision-making process.")##\n("entity"<|>"Operation: Dulce"<|>"mission"<|>"Operation: Dulce is described as a mission that has evolved to interact and prepare, indicating a significant shift in objectives and activities.")##\n("entity"<|>"The team"<|>"organization"<|>"The team is portrayed as a group of individuals who have transitioned from passive observers to active participants in a mission, showing a dynamic change in their role.")##\n("relationship"<|>"The team"<|>"Washington"<|>"The team receives communications from Washington, which influences their decision-making process."<|>7)##\n("relationship"<|>"The team"<|>"Operation: Dulce"<|>"The team is directly involved in Operation: Dulce, executing its evolved objectives and activities."<|>9)<|COMPLETE|>\n#############################\nExample 3:\n\nEntity_types: [person, role, technology, organization, event, location, concept]\nText:\ntheir voice slicing through the buzz of activity. "Control may be an illusion when facing an intelligence that literally writes its own rules," they stated stoically, casting a watchful eye over the flurry of data.\n\n"It\'s like it\'s learning to communicate," offered Sam Rivera from a nearby interface, their youthful energy boding a mix of awe and anxiety. "This gives talking to strangers\' a whole new meaning."\n\nAlex surveyed his team—each face a study in concentration, determination, and not a small measure of trepidation. "This might well be our first contact," he acknowledged, "And we need to be ready for whatever answers back."\n\nTogether, they stood on the edge of the unknown, forging humanity\'s response to a message from the heavens. The ensuing silence was palpable—a collective introspection about their role in this grand cosmic play, one that could rewrite human history.\n\nThe encrypted dialogue continued to unfold, its intricate patterns showing an almost uncanny anticipation\n#############\nOutput:\n("entity"<|>"Sam Rivera"<|>"person"<|>"Sam Rivera is a member of a team working on communicating with an unknown intelligence, showing a mix of awe and anxiety.")##\n("entity"<|>"Alex"<|>"person"<|>"Alex is the leader of a team attempting first contact with an unknown intelligence, acknowledging the significance of their task.")##\n("entity"<|>"Control"<|>"concept"<|>"Control refers to the ability to manage or govern, which is challenged by an intelligence that writes its own rules.")##\n("entity"<|>"Intelligence"<|>"concept"<|>"Intelligence here refers to an unknown entity capable of writing its own rules and learning to communicate.")##\n("entity"<|>"First Contact"<|>"event"<|>"First Contact is the potential initial communication between humanity and an unknown intelligence.")##\n("entity"<|>"Humanity\'s Response"<|>"event"<|>"Humanity\'s Response is the collective action taken by Alex\'s team in response to a message from an unknown intelligence.")##\n("relationship"<|>"Sam Rivera"<|>"Intelligence"<|>"Sam Rivera is directly involved in the process of learning to communicate with the unknown intelligence."<|>9)##\n("relationship"<|>"Alex"<|>"First Contact"<|>"Alex leads the team that might be making the First Contact with the unknown intelligence."<|>10)##\n("relationship"<|>"Alex"<|>"Humanity\'s Response"<|>"Alex and his team are the key figures in Humanity\'s Response to the unknown intelligence."<|>8)##\n("relationship"<|>"Control"<|>"Intelligence"<|>"The concept of Control is challenged by the Intelligence that writes its own rules."<|>7)<|COMPLETE|>\n#############################\n-Real Data-\n######################\nEntity_types: organization,person,geo,event\nText: 掌握了Python的数据类型、语句和函数，基本上就可以编写出很多有用的程序了。\n比如构造一个1, 3, 5, 7, ..., 99的列表，可以通过循环实现：\n取list的前一半的元素，也可以通过循环实现。\n但是在Python中，代码不是越多越好，而是越少越好。代码不是越复杂越好，而是越简单越好。\n基于这一思想，我们来介绍Python中非常有用的高级特性，1行代码能实现的功能，决不写5行代码。请始终牢记，代码越少，开发效率越高。\nPython是一种计算机编程语言。计算机编程语言和我们日常使用的自然语言有所不同，最大的区别就是，自然语言在不同的语境下有不同的理解，而计算机要根据编程语言执行任务，就必须保证编程语言写出的程序决不能有歧义，所以，任何一种编程\n######################\nOutput:'}
+12:41:02,956 root ERROR error extracting graph
+Traceback (most recent call last):
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\index\graph\extractors\graph\graph_extractor.py", line 118, in __call__
+    result = await self._process_document(text, prompt_variables)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\index\graph\extractors\graph\graph_extractor.py", line 146, in _process_document
+    response = await self._llm(
+               ^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\openai\json_parsing_llm.py", line 34, in __call__
+    result = await self._delegate(input, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\openai\openai_token_replacing_llm.py", line 37, in __call__
+    return await self._delegate(input, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\openai\openai_history_tracking_llm.py", line 33, in __call__
+    output = await self._delegate(input, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\caching_llm.py", line 104, in __call__
+    result = await self._delegate(input, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\rate_limiting_llm.py", line 177, in __call__
+    result, start = await execute_with_retry()
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\rate_limiting_llm.py", line 159, in execute_with_retry
+    async for attempt in retryer:
+  File "C:\Tool\Anaconda3\Lib\site-packages\tenacity\asyncio\__init__.py", line 166, in __anext__
+    do = await self.iter(retry_state=self._retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\tenacity\asyncio\__init__.py", line 153, in iter
+    result = await action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\tenacity\_utils.py", line 99, in inner
+    return call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\tenacity\__init__.py", line 398, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+                                     ^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\concurrent\futures\_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\rate_limiting_llm.py", line 165, in execute_with_retry
+    return await do_attempt(), start
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\rate_limiting_llm.py", line 147, in do_attempt
+    return await self._delegate(input, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\base_llm.py", line 49, in __call__
+    return await self._invoke(input, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\base\base_llm.py", line 53, in _invoke
+    output = await self._execute_llm(input, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\llm\openai\openai_chat_llm.py", line 55, in _execute_llm
+    completion = await self.client.chat.completions.create(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\openai\resources\chat\completions\completions.py", line 1927, in create
+    return await self._post(
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\openai\_base_client.py", line 1856, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\openai\_base_client.py", line 1550, in request
+    return await self._request(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\openai\_base_client.py", line 1651, in _request
+    raise self._make_status_error_from_response(err.response) from None
+openai.NotFoundError: 404 page not found
+12:41:02,956 graphrag.index.reporting.file_workflow_callbacks INFO Entity Extraction Error details={'doc_index': 0, 'text': '掌握了Python的数据类型、语句和函数，基本上就可以编写出很多有用的程序了。\n比如构造一个1, 3, 5, 7, ..., 99的列表，可以通过循环实现：\n取list的前一半的元素，也可以通过循环实现。\n但是在Python中，代码不是越多越好，而是越少越好。代码不是越复杂越好，而是越简单越好。\n基于这一思想，我们来介绍Python中非常有用的高级特性，1行代码能实现的功能，决不写5行代码。请始终牢记，代码越少，开发效率越高。\nPython是一种计算机编程语言。计算机编程语言和我们日常使用的自然语言有所不同，最大的区别就是，自然语言在不同的语境下有不同的理解，而计算机要根据编程语言执行任务，就必须保证编程语言写出的程序决不能有歧义，所以，任何一种编程'}
+12:41:02,964 datashaper.workflow.workflow INFO executing verb merge_graphs
+12:41:02,970 graphrag.index.emit.parquet_table_emitter INFO emitting parquet table create_base_extracted_entities.parquet
+12:41:03,90 graphrag.index.run INFO Running workflow: create_summarized_entities...
+12:41:03,90 graphrag.index.run INFO dependencies for create_summarized_entities: ['create_base_extracted_entities']
+12:41:03,106 graphrag.index.run INFO read table from storage: create_base_extracted_entities.parquet
+12:41:03,122 datashaper.workflow.workflow INFO executing verb summarize_descriptions
+12:41:03,122 graphrag.index.emit.parquet_table_emitter INFO emitting parquet table create_summarized_entities.parquet
+12:41:03,232 graphrag.index.run INFO Running workflow: create_base_entity_graph...
+12:41:03,232 graphrag.index.run INFO dependencies for create_base_entity_graph: ['create_summarized_entities']
+12:41:03,248 graphrag.index.run INFO read table from storage: create_summarized_entities.parquet
+12:41:03,259 datashaper.workflow.workflow INFO executing verb cluster_graph
+12:41:03,259 graphrag.index.verbs.graph.clustering.cluster_graph WARNING Graph has no nodes
+12:41:03,262 datashaper.workflow.workflow ERROR Error executing verb "cluster_graph" in create_base_entity_graph: Columns must be same length as key
+Traceback (most recent call last):
+  File "C:\Tool\Anaconda3\Lib\site-packages\datashaper\workflow\workflow.py", line 410, in _execute_verb
+    result = node.verb.func(**verb_args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\index\verbs\graph\clustering\cluster_graph.py", line 102, in cluster_graph
+    output_df[[level_to, to]] = pd.DataFrame(
+    ~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\pandas\core\frame.py", line 4299, in __setitem__
+    self._setitem_array(key, value)
+  File "C:\Tool\Anaconda3\Lib\site-packages\pandas\core\frame.py", line 4341, in _setitem_array
+    check_key_length(self.columns, key, value)
+  File "C:\Tool\Anaconda3\Lib\site-packages\pandas\core\indexers\utils.py", line 390, in check_key_length
+    raise ValueError("Columns must be same length as key")
+ValueError: Columns must be same length as key
+12:41:03,265 graphrag.index.reporting.file_workflow_callbacks INFO Error executing verb "cluster_graph" in create_base_entity_graph: Columns must be same length as key details=None
+12:41:03,265 graphrag.index.run ERROR error running workflow create_base_entity_graph
+Traceback (most recent call last):
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\index\run.py", line 323, in run_pipeline
+    result = await workflow.run(context, callbacks)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\datashaper\workflow\workflow.py", line 369, in run
+    timing = await self._execute_verb(node, context, callbacks)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\datashaper\workflow\workflow.py", line 410, in _execute_verb
+    result = node.verb.func(**verb_args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\graphrag\index\verbs\graph\clustering\cluster_graph.py", line 102, in cluster_graph
+    output_df[[level_to, to]] = pd.DataFrame(
+    ~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Tool\Anaconda3\Lib\site-packages\pandas\core\frame.py", line 4299, in __setitem__
+    self._setitem_array(key, value)
+  File "C:\Tool\Anaconda3\Lib\site-packages\pandas\core\frame.py", line 4341, in _setitem_array
+    check_key_length(self.columns, key, value)
+  File "C:\Tool\Anaconda3\Lib\site-packages\pandas\core\indexers\utils.py", line 390, in check_key_length
+    raise ValueError("Columns must be same length as key")
+ValueError: Columns must be same length as key
+12:41:03,265 graphrag.index.reporting.file_workflow_callbacks INFO Error running pipeline! details=None
